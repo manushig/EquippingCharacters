@@ -1,29 +1,31 @@
 package rolePlayingGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
 
 public class Character implements ICharacter {
 
   private int currentHitPoints;
   private IStrength characterAttackPower;
   private IStrength characterDefencePower;
-  private int maxNoOfHeadGearAllowed = 1;
-  private int maxNoOfHandGearAllowed = 2;
-  private int maxNoOfFootWearAllowed = 10;
   private int currentHeadGearCount;
   private int currentHandGearCount;
   private int currentFootWearCount;
   private int currentJewelryCount;
   private List<IGear> itemsCurrentlyWearingList;
-  private List<IGear> itemsDiscardedList;
+  private List<GearDiscarded> itemsDiscardedList;
 
   public Character(int hitPoints, int characterAttackPower, int characterDefencePower) {
     this.currentHitPoints = hitPoints;
     this.characterAttackPower = new Attack(characterAttackPower);
     this.characterAttackPower = new Defence(characterDefencePower);
     this.itemsCurrentlyWearingList = new ArrayList<IGear>();
-    this.itemsDiscardedList = new ArrayList<IGear>();
+    this.itemsDiscardedList = new ArrayList<GearDiscarded>();
     this.currentHandGearCount = 0;
     this.currentFootWearCount = 0;
     this.currentHeadGearCount = 0;
@@ -43,13 +45,38 @@ public class Character implements ICharacter {
     this.currentHandGearCount = countGearHandler.getHandGearCount();
     this.currentJewelryCount = countGearHandler.getJewelryCount();
 
-    GearAllowedHandler isGearAllowedHandler = new GearAllowedHandler(this.currentHeadGearCount, this.currentHandGearCount, this.currentFootWearCount, this.currentJewelryCount);
+    GearAllowedHandler isGearAllowedHandler = new GearAllowedHandler(this.currentHeadGearCount,
+        this.currentHandGearCount, this.currentFootWearCount, this.currentJewelryCount);
     gear.accept(isGearAllowedHandler);
 
     if (isGearAllowedHandler.getIsAllowed()) {
       this.itemsCurrentlyWearingList.add(gear);
     } else {
-      this.itemsDiscardedList.add(gear);
+      Collections.sort(this.itemsCurrentlyWearingList);
+      GearDiscarded gearToDiscard = null;
+      IGear discardedGear = null;
+      for (IGear existingItem : this.itemsCurrentlyWearingList) {
+        int result = existingItem.compareTo(gear);
+        if (result < 0) {
+          gearToDiscard = new GearDiscarded(existingItem, gear);
+          discardedGear = existingItem;
+          break;
+        }
+      }
+      if (Objects.isNull(gearToDiscard)) {
+        gearToDiscard = new GearDiscarded(gear, null);
+      } else {
+        ListIterator<IGear> iterator = this.itemsCurrentlyWearingList.listIterator();
+        while (iterator.hasNext()) {
+          IGear nextGear = iterator.next();
+          if (nextGear.equals(discardedGear)) {
+            iterator.set(gear);
+            break;
+          }
+        }
+      }
+
+      this.itemsDiscardedList.add(gearToDiscard);
     }
     return this;
   }

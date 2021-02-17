@@ -3,9 +3,8 @@ package rolePlayingGame;
 public class HeadGear extends AbstractGear {
 
   private IStrength defenceStrength;
-  private int allowedCount = 1;
-  private int count =1;
-  
+  private int count = 1;
+
   public HeadGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       int gearDefenceStrength) {
     super(gearFullName, gearAdjectiveName, wornOutPercentage);
@@ -13,43 +12,35 @@ public class HeadGear extends AbstractGear {
   }
 
   @Override
-  public int compareTo(IGear o) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public IGear isAllowed(IGear other) {
+  public int compareTo(IGear other) {
     if (other instanceof AbstractGear) {
       AbstractGear gear = (AbstractGear) other;
-      return gear.isAllowedHeadGear(this);
-    } else {
-      super.setResult(false);
-      return this;
+      return gear.compareToHeadGear(this);
+    }
+    else
+    {
+      return 1;
     }
   }
 
   @Override
-  protected IGear isAllowedHeadGear(HeadGear gear) {
-
-    return this;
+  protected int compareToHeadGear(HeadGear other) {
+    return other.getDefenceStrength().compareTo(this.getDefenceStrength());
   }
 
-  @Override
-  protected IGear isAllowedJewelry(Jewelry gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-  
   @Override
   public void accept(GearVisitor visitor) {
     visitor.visit(this);
-    
+
   }
-  
+
   @Override
   public int getCount() {
     return count;
+  }
+  
+  public IStrength getDefenceStrength() {
+    return defenceStrength;
   }
 
 }

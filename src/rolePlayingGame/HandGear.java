@@ -12,42 +12,6 @@ public class HandGear extends AbstractGear {
   }
   
   @Override
-  public int compareTo(IGear o) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public IGear isAllowed(IGear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedHandGear(HandGear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedFootwear(Footwear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedHeadGear(HeadGear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedJewelry(Jewelry gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-  
-  @Override
   public void accept(GearVisitor visitor) {
     visitor.visit(this);
     
@@ -56,6 +20,27 @@ public class HandGear extends AbstractGear {
   @Override
   public int getCount() {
     return count;
+  }
+  
+  @Override
+  public int compareTo(IGear other) {
+    if (other instanceof AbstractGear) {
+      AbstractGear gear = (AbstractGear) other;
+      return gear.compareToHandGear(this);
+    }
+    else
+    {
+      return 1;
+    }
+  }
+
+  @Override
+  protected int compareToHandGear(HandGear other) {
+    return other.getDefenceStrength().compareTo(this.getDefenceStrength());
+  }
+  
+  public IStrength getDefenceStrength() {
+    return strength;
   }
 
 }

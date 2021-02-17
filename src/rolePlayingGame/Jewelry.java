@@ -13,42 +13,6 @@ public class Jewelry extends AbstractGear {
   }
 
   @Override
-  public int compareTo(IGear o) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public IGear isAllowed(IGear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedHandGear(HandGear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedFootwear(Footwear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedHeadGear(HeadGear gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  protected IGear isAllowedJewelry(Jewelry gear) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
   public void accept(GearVisitor visitor) {
     visitor.visit(this);
 
@@ -57,6 +21,16 @@ public class Jewelry extends AbstractGear {
   @Override
   public int getCount() {
     return count;
+  }
+  
+  
+  public IStrength getDefenceStrength() {
+    return strength;
+  }
+
+  @Override
+  public int compareTo(IGear o) {
+    return -1;
   }
 
 }

@@ -36,7 +36,7 @@ public class GearAllowedHandler implements GearVisitor {
 
   @Override
   public void visit(HandGear handGear) {
-    if (currentHandGearCount < 10) {
+    if (currentHandGearCount < 5) {
       this.isAllowed = true;
     } else {
       this.isAllowed = false;

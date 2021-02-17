@@ -5,14 +5,10 @@ public abstract class AbstractGear implements IGear {
   private int wornOutPercentage;
   private Boolean result = false;
 
-
-
   public AbstractGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage) {
     this.gearDescription = new GearDescription(gearFullName, gearAdjectiveName);
     this.wornOutPercentage = wornOutPercentage;
   }
-
-
 
   @Override
   public Boolean getResult() {
@@ -23,27 +19,16 @@ public abstract class AbstractGear implements IGear {
     this.result = result;
   }
 
-  protected IGear isAllowedHandGear(HandGear gear) {
-    this.result = false;
-    return this;
+  protected int compareToHeadGear(HeadGear other) {
+    return 1;
   }
 
-  protected IGear isAllowedFootwear(Footwear gear)
-  {
-    this.result = false;
-    return this;
+  protected int compareToHandGear(HandGear other) {
+    return 1;
   }
 
-  protected IGear isAllowedHeadGear(HeadGear gear)
-  {
-    this.result = false;
-    return this;
-  }
-
-  protected IGear isAllowedJewelry(Jewelry gear)
-  {
-    this.result = false;
-    return this;
+  protected int compareToFootwear(Footwear other) {
+    return 1;
   }
 
 }

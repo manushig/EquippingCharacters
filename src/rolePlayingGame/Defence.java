@@ -6,4 +6,21 @@ public class Defence extends AbstractStrength {
   {
     super(defenceStrength);
   }
+  
+  @Override
+  public int compareTo(IStrength other) {
+    if (other instanceof AbstractStrength) {
+      AbstractStrength strength = (AbstractStrength) other;
+      return strength.compareToDefence(this);
+    }
+    else
+    {
+      return -1;
+    }
+  }
+
+  @Override
+  protected int compareToDefence(Defence other) {
+    return other.getStrength().compareTo(this.getStrength());
+  }
 }
