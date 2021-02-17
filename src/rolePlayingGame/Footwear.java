@@ -2,19 +2,16 @@ package rolePlayingGame;
 
 public class Footwear extends AbstractGear {
 
-  private IStrength attackStrength;
   private int count = 1;
 
   public Footwear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
-      int gearAttackStrength) {
-    super(gearFullName, gearAdjectiveName, wornOutPercentage);
-    this.attackStrength = new Attack(gearAttackStrength);
+      IStrength gearAttackStrength) {
+    super(gearFullName, gearAdjectiveName, wornOutPercentage, gearAttackStrength);
   }
 
   @Override
   public void accept(GearVisitor visitor) {
     visitor.visit(this);
-
   }
 
   @Override
@@ -34,10 +31,7 @@ public class Footwear extends AbstractGear {
 
   @Override
   protected int compareToFootwear(Footwear other) {
-    return other.getDefenceStrength().compareTo(this.getDefenceStrength());
+    return other.getStrength().compareTo(this.getStrength());
   }
 
-  public IStrength getDefenceStrength() {
-    return attackStrength;
-  }
 }

@@ -21,7 +21,8 @@ public abstract class AbstractStrength implements IStrength {
     return -1;
   }
 
-  public Integer getStrength() {
+
+  protected Integer getStrength() {
     return strength;
   }
 }

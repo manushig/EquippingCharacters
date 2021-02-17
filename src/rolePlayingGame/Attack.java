@@ -11,9 +11,7 @@ public class Attack extends AbstractStrength {
     if (other instanceof AbstractStrength) {
       AbstractStrength strength = (AbstractStrength) other;
       return strength.compareToAttack(this);
-    }
-    else
-    {
+    } else {
       return 1;
     }
   }
@@ -21,5 +19,11 @@ public class Attack extends AbstractStrength {
   @Override
   protected int compareToAttack(Attack other) {
     return other.getStrength().compareTo(this.getStrength());
+  }
+
+  @Override
+  public void accept(StrengthVisitor visitor) {
+    visitor.visit(this);
+
   }
 }

@@ -2,13 +2,11 @@ package rolePlayingGame;
 
 public class HeadGear extends AbstractGear {
 
-  private IStrength defenceStrength;
   private int count = 1;
 
   public HeadGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
-      int gearDefenceStrength) {
-    super(gearFullName, gearAdjectiveName, wornOutPercentage);
-    this.defenceStrength = new Defence(gearDefenceStrength);
+      IStrength gearDefenceStrength) {
+    super(gearFullName, gearAdjectiveName, wornOutPercentage, gearDefenceStrength);
   }
 
   @Override
@@ -25,7 +23,7 @@ public class HeadGear extends AbstractGear {
 
   @Override
   protected int compareToHeadGear(HeadGear other) {
-    return other.getDefenceStrength().compareTo(this.getDefenceStrength());
+    return other.getStrength().compareTo(this.getStrength());
   }
 
   @Override
@@ -38,9 +36,6 @@ public class HeadGear extends AbstractGear {
   public int getCount() {
     return count;
   }
-  
-  public IStrength getDefenceStrength() {
-    return defenceStrength;
-  }
+
 
 }

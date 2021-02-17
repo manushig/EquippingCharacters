@@ -14,4 +14,14 @@ public class GearDescription {
   public String toString() {
     return String.format(this.itemsFullName + "and " + this.itemsAdjective);
   }
+
+  public String getItemsFullName() {
+    return this.itemsFullName;
+  }
+
+  public String getItemsAdjective() {
+    return this.itemsAdjective;
+  }
+  
+  
 }

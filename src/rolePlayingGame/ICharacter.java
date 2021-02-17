@@ -1,5 +1,7 @@
 package rolePlayingGame;
 
 public interface ICharacter {
-  public ICharacter addGear(IGear gear);
+  public ICharacter dressUpGear(IGear gear);
+  
+  public String printCharacterDetails();
 }

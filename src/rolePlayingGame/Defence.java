@@ -23,4 +23,10 @@ public class Defence extends AbstractStrength {
   protected int compareToDefence(Defence other) {
     return other.getStrength().compareTo(this.getStrength());
   }
+  
+  @Override
+  public void accept(StrengthVisitor visitor) {
+    visitor.visit(this);
+
+  }
 }
