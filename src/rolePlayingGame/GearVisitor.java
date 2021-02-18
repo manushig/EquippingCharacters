@@ -16,6 +16,7 @@ public interface GearVisitor {
    * This method allows the visitor to visit and access the element of HeadGear.
    * 
    * @param attack This is an HeadGear object.
+   * @throws NullPointerException HeadGear object value is null
    */
   public void visit(HeadGear headGear);
 
@@ -23,6 +24,7 @@ public interface GearVisitor {
    * This method allows the visitor to visit and access the element of Footwear.
    * 
    * @param attack This is an Footwear object.
+   * @throws NullPointerException Footwear object value is null
    */
   public void visit(Footwear footwear);
 
@@ -30,6 +32,7 @@ public interface GearVisitor {
    * This method allows the visitor to visit and access the element of HandGear.
    * 
    * @param attack This is an HandGear object.
+   * @throws NullPointerException HandGear object value is null
    */
   public void visit(HandGear handGear);
 
@@ -37,6 +40,7 @@ public interface GearVisitor {
    * This method allows the visitor to visit and access the element of Jewelry.
    * 
    * @param attack This is an Jewelry object.
+   * @throws NullPointerException Jewelry object value is null
    */
   public void visit(Jewelry jewelry);
 }

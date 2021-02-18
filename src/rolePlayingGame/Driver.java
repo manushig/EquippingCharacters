@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Driver program for Role playing game, that dresses two (2) characters and
+ * pits them in a battle.
+ */
 public class Driver {
 
   private static IGear helmet;
@@ -53,6 +57,12 @@ public class Driver {
   private static ICharacter Bob;
   private static ICharacter Alice;
 
+  /**
+   * Driver program that dresses two characters and pits them in a battle and
+   * prints output for the various functionalities
+   * 
+   * @param args Not used.
+   */
   public static void main(String[] args) {
 
     Boolean isRematch = true;
@@ -63,13 +73,13 @@ public class Driver {
 
     Scanner scanner = new Scanner(System.in);
     while (isRematch) {
-      
+
       final String yesOption = "yes";
       final String noOption = "no";
       String promptMessage = "\n\nDo you want a rematch? Reply Yes/No\n";
       System.out.print(promptMessage);
       String userReply = scanner.nextLine();
-      
+
       if (yesOption.equalsIgnoreCase(userReply)) {
         prepareCharactersforBattle();
         predictWinner();
@@ -84,9 +94,15 @@ public class Driver {
     scanner.close();
   }
 
+  /**
+   * Private Helper method to create and dress each character with a random 20
+   * items from the chest of gear and print the output for each character in the
+   * battle along with what they are wearing and their attack and defense strength
+   * 
+   */
   private static void prepareCharactersforBattle() {
     createCharacters();
-    
+
     populateChest(Alice);
     populateChest(Bob);
 
@@ -94,6 +110,10 @@ public class Driver {
     System.out.println(Bob.getCharacterDetails());
   }
 
+  /**
+   * Private Helper method to Predict which of the two characters would win in a
+   * battle and print its output.
+   */
   private static void predictWinner() {
     IBattle battle = new Battle(Alice, Bob);
     int playersTotalHealth = 100;
@@ -102,11 +122,17 @@ public class Driver {
     System.out.println(matchPredictionResult);
   }
 
+  /**
+   * Private Helper method create two characters for the battle.
+   */
   private static void createCharacters() {
     Bob = new Character("Bob", 5, 20);
     Alice = new Character("Alice", 15, 10);
   }
 
+  /**
+   * Private Helper method create multiple gears for the battle.
+   */
   private static void createGears() {
     helmet = new HeadGear("Helmet of Strength", "Strength", 20, new Defense(10));
     headband = new HeadGear("Headband of Shock", "Shock", 40, new Defense(15));
@@ -155,6 +181,13 @@ public class Driver {
     gaiter = new Jewelry("Gaiter of Disguise", "Disguise", 0, new Attack(-25));
   }
 
+  /**
+   * Private Helper method to popluate a chest of gear with a minimum of 4 items
+   * of headgear, 8 items of footwear, 15 items of hand gear, and 15 items of
+   * jewelry and Dress each character with a random 20 items from the chest of
+   * gear
+   * 
+   */
   private static void populateChest(ICharacter character) {
     List<IGear> gearsList = new ArrayList<>();
     gearsList.add(helmet);
@@ -211,6 +244,13 @@ public class Driver {
     }
   }
 
+  /**
+   * Private Helper method to generate the random number within the given range.
+   * 
+   * @param min It is the minimum range
+   * @param max It is the maximum range
+   * 
+   */
   public static int getRandomNumber(int min, int max) {
     Random random = new Random();
     return random.nextInt(max - min) + min;

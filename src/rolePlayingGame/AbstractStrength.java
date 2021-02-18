@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public abstract class AbstractStrength implements IStrength {
 
-  private Integer strength;
+  private final Integer strength;
 
   /**
    * Constructs a AbstractStrength in terms of strength.
@@ -52,6 +52,6 @@ public abstract class AbstractStrength implements IStrength {
    * @return the IStrength object.
    */
   protected Integer getStrength() {
-    return new Integer(strength);
+    return new Integer(this.strength);
   }
 }

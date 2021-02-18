@@ -8,9 +8,9 @@ import java.util.Objects;
  * to the concrete implementations of the {@link IGear} interface.
  */
 public abstract class AbstractGear implements IGear {
-  private GearDescription gearDescription;
-  private int wornOutPercentage;
-  private IStrength strength;
+  private final GearDescription gearDescription;
+  private final int wornOutPercentage;
+  private final IStrength strength;
 
   /**
    * Constructs a AbstractGear in terms of its full name, adjective, worn out
@@ -78,7 +78,7 @@ public abstract class AbstractGear implements IGear {
    *
    * @return the worn out percentage of the Gear.
    */
-  protected Integer getWornOutPercentage() {
+  protected int getWornOutPercentage() {
     return this.wornOutPercentage;
   }
 
@@ -88,7 +88,7 @@ public abstract class AbstractGear implements IGear {
    * @return the IStrength object.
    */
   protected IStrength getStrength() {
-   
+
     return this.strength;
   }
 

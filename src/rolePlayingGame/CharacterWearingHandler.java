@@ -14,10 +14,21 @@ import java.util.Objects;
 
 public class CharacterWearingHandler implements GearVisitor {
 
-  String headGearDescription = "";
-  String handGearDescription = "";
-  String footWearDescription = "";
-  String jewelryDescription = "";
+  String headGearDescription;
+  String handGearDescription;
+  String footWearDescription;
+  String jewelryDescription;
+
+  /**
+   * Constructs a CharacterWearingHandler
+   *
+   */
+  public CharacterWearingHandler() {
+    this.headGearDescription = "";
+    this.handGearDescription = "";
+    this.footWearDescription = "";
+    this.jewelryDescription = "";
+  }
 
   @Override
   public void visit(HeadGear headGear) throws NullPointerException {

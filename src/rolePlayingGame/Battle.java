@@ -13,8 +13,8 @@ public class Battle implements IBattle {
     PLAYER_1_WINNER, PLAYER_2_WINNER, TIE;
   }
 
-  private ICharacter player1;
-  private ICharacter player2;
+  private final ICharacter player1;
+  private final ICharacter player2;
 
   /**
    * Constructs a Battle in terms of its player1 and player2
@@ -99,7 +99,6 @@ public class Battle implements IBattle {
       }
 
       player1Health = player1Health - player1Damage;
-
       player2Health = player2Health - player2Damage;
 
       if (player1Health <= 0 && player2Health <= 0) {
@@ -110,10 +109,6 @@ public class Battle implements IBattle {
         IsMatchContinuing = false;
       } else if (player2Health <= 0) {
         matchResult = MatchStatus.PLAYER_1_WINNER;
-        IsMatchContinuing = false;
-      }
-
-      else if (round == 98 && IsMatchContinuing) {
         IsMatchContinuing = false;
       } else if ((player1Attack == 0 && player2Attack == 0 && player1Defence == 0
           && player2Defence == 0) || (round == 50 && IsMatchContinuing)) {
@@ -131,6 +126,23 @@ public class Battle implements IBattle {
       }
     }
 
+    result = predictionResult(matchResult, round);
+
+    stringBuilder.append("*************** Battle Prediction ***************\n\n");
+    stringBuilder.append(result);
+    return stringBuilder.toString();
+  }
+
+  /**
+   * Private helper method to give the prediction result based on matchResult.
+   *
+   * @param matchResult This is match result
+   * @param round       This is the round till which players survived
+   * @return prediction result based on matchResult.
+   */
+  private String predictionResult(MatchStatus matchResult, int round) {
+    String result = "";
+
     switch (matchResult) {
     case TIE:
       result = String.format("Its a tie after %d rounds.", round);
@@ -145,9 +157,7 @@ public class Battle implements IBattle {
       result = String.format("Something went wrong. Try again");
     }
 
-    stringBuilder.append("*************** Battle Prediction ***************\n\n");
-    stringBuilder.append(result);
-    return stringBuilder.toString();
+    return result;
   }
 
 }

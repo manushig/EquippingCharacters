@@ -11,10 +11,21 @@ import java.util.Objects;
  */
 
 public class CountGearHandler implements GearVisitor {
-  private int headGearCount = 0;
-  private int handGearCount = 0;
-  private int footwearCount = 0;
-  private int JewelryCount = 0;
+  private int headGearCount;
+  private int handGearCount;
+  private int footwearCount;
+  private int JewelryCount;
+
+  /**
+   * Constructs a CountGearHandler
+   *
+   */
+  public CountGearHandler() {
+    this.headGearCount = 0;
+    this.handGearCount = 0;
+    this.footwearCount = 0;
+    this.JewelryCount = 0;
+  }
 
   @Override
   public void visit(HeadGear headGear) throws NullPointerException {

@@ -13,12 +13,9 @@ import javafx.util.Pair;
  * "wearing" different items.
  */
 public class Character implements ICharacter {
-  private String characterName;
-  private IStrength characterAttackStrength;
-  private IStrength characterDefenseStrength;
-  private int currentHeadGearCount;
-  private int currentHandGearCount;
-  private int currentFootWearCount;
+  private final String characterName;
+  private final IStrength characterAttackStrength;
+  private final IStrength characterDefenseStrength;
   private List<IGear> itemsCurrentlyWearingList;
   private List<GearDiscarded> itemsDiscardedList;
 
@@ -39,9 +36,6 @@ public class Character implements ICharacter {
         Objects.requireNonNull(characterDefencePower, "Character Defence Strength cannot be null"));
     this.itemsCurrentlyWearingList = new ArrayList<IGear>();
     this.itemsDiscardedList = new ArrayList<GearDiscarded>();
-    this.currentHandGearCount = 0;
-    this.currentFootWearCount = 0;
-    this.currentHeadGearCount = 0;
   }
 
   @Override
@@ -50,17 +44,20 @@ public class Character implements ICharacter {
       throw new NullPointerException("Gear value cannot be null");
     }
     CountGearHandler countGearHandler = new CountGearHandler();
+    int currentHeadGearCount = 0;
+    int currentHandGearCount = 0;
+    int currentFootWearCount = 0;
 
     for (IGear item : itemsCurrentlyWearingList) {
       item.accept(countGearHandler);
     }
 
-    this.currentHeadGearCount = countGearHandler.getHeadGearCount();
-    this.currentFootWearCount = countGearHandler.getFootwearCount();
-    this.currentHandGearCount = countGearHandler.getHandGearCount();
+    currentHeadGearCount = countGearHandler.getHeadGearCount();
+    currentFootWearCount = countGearHandler.getFootwearCount();
+    currentHandGearCount = countGearHandler.getHandGearCount();
 
-    GearAllowedHandler isGearAllowedHandler = new GearAllowedHandler(this.currentHeadGearCount,
-        this.currentHandGearCount, this.currentFootWearCount);
+    GearAllowedHandler isGearAllowedHandler = new GearAllowedHandler(currentHeadGearCount,
+        currentHandGearCount, currentFootWearCount);
     gear.accept(isGearAllowedHandler);
 
     if (Objects.requireNonNull(isGearAllowedHandler.getIsAllowed(),
@@ -248,7 +245,7 @@ public class Character implements ICharacter {
 
     gearTotalAttackStrength = Objects.requireNonNull(gearStrengthHandler.getTotalattackValue(),
         "Total Attack value cannot be null");
-    gearTotalDefenceStrength = Objects.requireNonNull(gearStrengthHandler.getTotaldefenceValue(),
+    gearTotalDefenceStrength = Objects.requireNonNull(gearStrengthHandler.getTotaldefenseValue(),
         "Total Defence value cannot be null");
 
     StrengthHandler strengthHandler = new StrengthHandler();
@@ -257,7 +254,7 @@ public class Character implements ICharacter {
 
     totalAttackStrength = Objects.requireNonNull(strengthHandler.getAttackStrengthValue(),
         "Attack Strength value cannot be null") + gearTotalAttackStrength;
-    totalDefenceStrength = Objects.requireNonNull(strengthHandler.getDefenceStrengthValue(),
+    totalDefenceStrength = Objects.requireNonNull(strengthHandler.getDefenseStrengthValue(),
         "Defence Strength value cannot be null") + gearTotalDefenceStrength;
 
     gearTotalStrength = new Pair<>(totalAttackStrength, totalDefenceStrength);

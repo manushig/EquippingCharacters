@@ -2,9 +2,21 @@ package rolePlayingGame;
 
 import java.util.Objects;
 
+/**
+ * StrengthHandler, manages the attack and defense of character or gear.
+ */
 public class StrengthHandler implements StrengthVisitor {
-  private Integer attackStrengthValue = 0;
-  private Integer defenceStrengthValue = 0;
+  private Integer attackStrengthValue;
+  private Integer defenceStrengthValue;
+
+  /**
+   * Constructs a StrengthHandler
+   *
+   */
+  public StrengthHandler() {
+    this.attackStrengthValue = 0;
+    this.defenceStrengthValue = 0;
+  }
 
   @Override
   public void visit(Attack attack) throws NullPointerException {
@@ -24,12 +36,22 @@ public class StrengthHandler implements StrengthVisitor {
         "Defence value cannot be null");
   }
 
+  /**
+   * This method gets the attack value.
+   * 
+   * @return the attack value.
+   */
   public Integer getAttackStrengthValue() {
-    return this.attackStrengthValue;
+    return new Integer(this.attackStrengthValue);
   }
 
-  public Integer getDefenceStrengthValue() {
-    return this.defenceStrengthValue;
+  /**
+   * This method gets the defense value.
+   * 
+   * @return the defense value.
+   */
+  public Integer getDefenseStrengthValue() {
+    return new Integer(this.defenceStrengthValue);
   }
 
 }
