@@ -4,31 +4,45 @@ import java.util.Objects;
 
 import javafx.util.Pair;
 
+/**
+ * Battle, it is where battle between two players will happen.
+ */
 public class Battle implements IBattle {
 
-  enum MatchStatus {
+  private enum MatchStatus {
     PLAYER_1_WINNER, PLAYER_2_WINNER, TIE;
   }
 
   private ICharacter player1;
   private ICharacter player2;
 
-  public Battle(ICharacter player1, ICharacter player2) throws IllegalArgumentException {
+  /**
+   * Constructs a Battle in terms of its player1 and player2
+   *
+   * @param player1 It is the Player 1.
+   * @param player2 It is the Player 2.
+   * @throws NullPointerException If player1 or player2 values are null.
+   */
+  public Battle(ICharacter player1, ICharacter player2) throws NullPointerException {
     if (Objects.isNull(player1)) {
-      throw new IllegalArgumentException("Player1 value cannot be null");
+      throw new NullPointerException("Player1 value cannot be null");
     }
     if (Objects.isNull(player2)) {
-      throw new IllegalArgumentException("Player2 value cannot be null");
+      throw new NullPointerException("Player2 value cannot be null");
     }
     this.player1 = player1;
     this.player2 = player2;
   }
 
   @Override
-  public String predictWinner(int playersTotalHealth) throws IllegalArgumentException {
+  public String predictWinner(int playersTotalHealth)
+      throws NullPointerException, IllegalArgumentException {
 
-    if (playersTotalHealth == 0 || Objects.isNull(playersTotalHealth)) {
-      throw new IllegalArgumentException("Players total health value cannot be 0 or null");
+    if (Objects.isNull(playersTotalHealth)) {
+      throw new NullPointerException("Players total health value cannot be null");
+    }
+    if (playersTotalHealth == 0) {
+      throw new IllegalArgumentException("Players total health value cannot be 0");
     }
 
     String result = "";
@@ -49,7 +63,8 @@ public class Battle implements IBattle {
     Boolean IsMatchContinuing = true;
 
     while (IsMatchContinuing) {
-      player1HitPoints = player1.characterHitPoints(round);
+      player1HitPoints = Objects.requireNonNull(player1.characterHitPoints(round),
+          "Player Hit points value cannot be null");
       player1Attack = player1HitPoints.getKey();
       player1Defence = player1HitPoints.getValue();
 
@@ -60,7 +75,8 @@ public class Battle implements IBattle {
         player1Defence = 0;
       }
 
-      player2HitPoints = player2.characterHitPoints(round);
+      player2HitPoints = Objects.requireNonNull(player2.characterHitPoints(round),
+          "Player Hit points value cannot be null");
       player2Attack = player2HitPoints.getKey();
       player2Defence = player2HitPoints.getValue();
 

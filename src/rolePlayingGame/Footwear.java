@@ -2,9 +2,23 @@ package rolePlayingGame;
 
 import java.util.Objects;
 
+/**
+ * Footwear, these items go on the character’s feet (boots/sneakers) and are
+ * only used for attack.
+ */
 public class Footwear extends AbstractGear {
 
-  private int count = 1;
+  /**
+   * Constructs a Footwear in terms of its full name, adjective, worn out
+   * percentage and strength.
+   *
+   * @param gearFullName      It is the full name of the foot wear.
+   * @param gearAdjectiveName It is the adjective name of the foot wear.
+   * @param wornOutPercentage It is the worn out percentage of the foot wear.
+   * @param strength          It is the strength of the foot wear.
+   * @throws NullPointerException If foot wear Full Name or Adjective Name or Worn
+   *                              out percentage or Strength values are null.
+   */
 
   public Footwear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       IStrength gearAttackStrength) {
@@ -15,22 +29,17 @@ public class Footwear extends AbstractGear {
   }
 
   @Override
-  public void accept(GearVisitor visitor) throws IllegalArgumentException {
+  public void accept(GearVisitor visitor) throws NullPointerException {
     if (Objects.isNull(visitor)) {
-      throw new IllegalArgumentException("Vsitor Value cannot be null");
+      throw new NullPointerException("Visitor Value cannot be null");
     }
     visitor.visit(this);
   }
 
   @Override
-  public int getCount() {
-    return count;
-  }
-
-  @Override
-  public int compareTo(IGear other) throws IllegalArgumentException {
+  public int compareTo(IGear other) throws NullPointerException {
     if (Objects.isNull(other)) {
-      throw new IllegalArgumentException("Gear Value cannot be null");
+      throw new NullPointerException("Gear Value cannot be null");
     }
     if (other instanceof AbstractGear) {
       AbstractGear gear = (AbstractGear) other;
@@ -42,7 +51,8 @@ public class Footwear extends AbstractGear {
 
   @Override
   protected int compareToFootwear(Footwear other) {
-    return other.getStrength().compareTo(this.getStrength());
+    return Objects.requireNonNull(other.getStrength(), "Strength value cannot be null")
+        .compareTo(Objects.requireNonNull(this.getStrength(), "Strength value cannot be null"));
   }
 
 }

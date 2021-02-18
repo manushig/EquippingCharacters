@@ -90,8 +90,8 @@ public class Driver {
     populateChest(Alice);
     populateChest(Bob);
 
-    System.out.println(Alice.printCharacterDetails());
-    System.out.println(Bob.printCharacterDetails());
+    System.out.println(Alice.getCharacterDetails());
+    System.out.println(Bob.getCharacterDetails());
   }
 
   private static void predictWinner() {
@@ -108,10 +108,10 @@ public class Driver {
   }
 
   private static void createGears() {
-    helmet = new HeadGear("Helmet of Strength", "Strength", 20, new Defence(10));
-    headband = new HeadGear("Headband of Shock", "Shock", 40, new Defence(15));
-    mask = new HeadGear("Mask of Flight", "Flight", 40, new Defence(5));
-    cap = new HeadGear("Cap of Electricity", "Electricity", 0, new Defence(-1));
+    helmet = new HeadGear("Helmet of Strength", "Strength", 20, new Defense(10));
+    headband = new HeadGear("Headband of Shock", "Shock", 40, new Defense(15));
+    mask = new HeadGear("Mask of Flight", "Flight", 40, new Defense(5));
+    cap = new HeadGear("Cap of Electricity", "Electricity", 0, new Defense(-1));
 
     sandal = new Footwear("Sandals of Speed", "Speed", 20, new Attack(10));
     hoverboard = new Footwear("Hoverboard of Heft", "Heft", 40, new Attack(8));
@@ -125,33 +125,33 @@ public class Driver {
     ring = new HandGear("Ring of Invisibility", "Invisibility", 0, new Attack(-5));
     signet = new HandGear("Signet of Ambush", "Ambush", 25, new Attack(5));
     knuckleDuster = new HandGear("Knuckle Duster of Charge", "Charge", 40, new Attack(3));
-    glove = new HandGear("Gloves of Holding", "Holding", 40, new Defence(5));
-    bracer = new HandGear("Bracer of Storm", "Storm", 50, new Defence(15));
-    brassKnuckles = new HandGear("Brass Knuckles of Shock", "Shock", 0, new Defence(-5));
-    watch = new HandGear("Watch of Explosion", "Explosion", 80, new Defence(25));
-    bangles = new HandGear("Bangles of Telepathy", "Telepathy", 20, new Defence(10));
+    glove = new HandGear("Gloves of Holding", "Holding", 40, new Defense(5));
+    bracer = new HandGear("Bracer of Storm", "Storm", 50, new Defense(15));
+    brassKnuckles = new HandGear("Brass Knuckles of Shock", "Shock", 0, new Defense(-5));
+    watch = new HandGear("Watch of Explosion", "Explosion", 80, new Defense(25));
+    bangles = new HandGear("Bangles of Telepathy", "Telepathy", 20, new Defense(10));
     bracelets = new HandGear("Bracelets of Flame", "Flame", 20, new Attack(8));
     fingerRings = new HandGear("FingerRings of Sight", "Sight", 0, new Attack(-2));
     fitBand = new HandGear("FitBand of Speed", "Speed", 10, new Attack(20));
-    handcuffs = new HandGear("Handcuffs of Passion", "Passion", 10, new Defence(2));
+    handcuffs = new HandGear("Handcuffs of Passion", "Passion", 10, new Defense(2));
     mittens = new HandGear("Mittens of Disguise", "Disguise", 10, new Attack(18));
-    fingerlessGloves = new HandGear("Fingerless Gloves of Rain", "Rain", 0, new Defence(20));
+    fingerlessGloves = new HandGear("Fingerless Gloves of Rain", "Rain", 0, new Defense(20));
     wristBand = new HandGear("WristBand of Persuasion", "Persuasion", 40, new Attack(2));
 
     amulet = new Jewelry("Amulet of Electricity", "Electricity", 0, new Attack(-5));
     necklace = new Jewelry("Necklace of Sight", "Sight", 20, new Attack(10));
     scarab = new Jewelry("Scarab of Burning", "Burning", 30, new Attack(5));
     collar = new Jewelry("Collar of Teleportation", "Teleportation", 40, new Attack(15));
-    brooch = new Jewelry("Brooch of Ice", "Ice", 0, new Defence(-5));
-    ribbon = new Jewelry("Ribbon of Magic", "Magic", 60, new Defence(15));
-    bowTie = new Jewelry("BowTie of Escape", "Escape", 50, new Defence(5));
-    pendant = new Jewelry("Pendant of Ruin", "Ruin", 10, new Defence(5));
-    chain = new Jewelry("Chain of Telepathy", "Telepathy", 20, new Defence(5));
-    choker = new Jewelry("Choker of Flight", "Flight", 10, new Defence(11));
+    brooch = new Jewelry("Brooch of Ice", "Ice", 0, new Defense(-5));
+    ribbon = new Jewelry("Ribbon of Magic", "Magic", 60, new Defense(15));
+    bowTie = new Jewelry("BowTie of Escape", "Escape", 50, new Defense(5));
+    pendant = new Jewelry("Pendant of Ruin", "Ruin", 10, new Defense(5));
+    chain = new Jewelry("Chain of Telepathy", "Telepathy", 20, new Defense(5));
+    choker = new Jewelry("Choker of Flight", "Flight", 10, new Defense(11));
     tie = new Jewelry("Tie of Healing", "Healing", 30, new Attack(9));
-    carcanet = new Jewelry("Carcanet of Sleep", "Sleep", 20, new Defence(15));
+    carcanet = new Jewelry("Carcanet of Sleep", "Sleep", 20, new Defense(15));
     torc = new Jewelry("Torc of Flame", "Flame", 0, new Attack(-5));
-    cowl = new Jewelry("Cowl of Explosion", "Explosion", 40, new Defence(25));
+    cowl = new Jewelry("Cowl of Explosion", "Explosion", 40, new Defense(25));
     gaiter = new Jewelry("Gaiter of Disguise", "Disguise", 0, new Attack(-25));
   }
 

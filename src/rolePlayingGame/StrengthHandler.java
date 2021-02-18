@@ -7,19 +7,21 @@ public class StrengthHandler implements StrengthVisitor {
   private Integer defenceStrengthValue = 0;
 
   @Override
-  public void visit(Attack attack) throws IllegalArgumentException {
+  public void visit(Attack attack) throws NullPointerException {
     if (Objects.isNull(attack)) {
-      throw new IllegalArgumentException("Attack value cannot be null");
+      throw new NullPointerException("Attack value cannot be null");
     }
-    attackStrengthValue = attack.getStrength();
+    attackStrengthValue = Objects.requireNonNull(attack.getStrength(),
+        "Attack value cannot be null");
   }
 
   @Override
-  public void visit(Defence defence) throws IllegalArgumentException {
+  public void visit(Defense defence) throws NullPointerException {
     if (Objects.isNull(defence)) {
-      throw new IllegalArgumentException("Defence value cannot be null");
+      throw new NullPointerException("Defence value cannot be null");
     }
-    defenceStrengthValue = defence.getStrength();
+    defenceStrengthValue = Objects.requireNonNull(defence.getStrength(),
+        "Defence value cannot be null");
   }
 
   public Integer getAttackStrengthValue() {

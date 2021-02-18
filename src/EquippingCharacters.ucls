@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="rolePlayingGame.Defence" project="EquippingCharacters" 
-    file="/EquippingCharacters/src/rolePlayingGame/Defence.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="rolePlayingGame.Defense" project="EquippingCharacters" 
+    file="/EquippingCharacters/src/rolePlayingGame/Defense.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="209" x="431" y="467"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -309,7 +309,7 @@
   </generalization>  
   <association id="50">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="51" name="characterAttackPower">        
+      <attribute id="51" name="characterAttackStrength">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="52" minimum="0" maximum="1">        
@@ -543,7 +543,7 @@
   </association>  
   <association id="108">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="109" name="characterDefencePower">        
+      <attribute id="109" name="characterDefenseStrength">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="110" minimum="0" maximum="1">        

@@ -23,9 +23,9 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(HeadGear headGear) throws IllegalArgumentException {
+  public void visit(HeadGear headGear) throws NullPointerException {
     if (Objects.isNull(headGear)) {
-      throw new IllegalArgumentException("Head Gear value cannot be null");
+      throw new NullPointerException("Head Gear value cannot be null");
     }
     StrengthHandler strengthHandler = new StrengthHandler();
     headGear.getStrength().accept(strengthHandler);
@@ -38,9 +38,9 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(Footwear footwear) throws IllegalArgumentException {
+  public void visit(Footwear footwear) throws NullPointerException {
     if (Objects.isNull(footwear)) {
-      throw new IllegalArgumentException("Footwear value cannot be null");
+      throw new NullPointerException("Footwear value cannot be null");
     }
     StrengthHandler strengthHandler = new StrengthHandler();
     footwear.getStrength().accept(strengthHandler);
@@ -53,9 +53,9 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(HandGear handGear) throws IllegalArgumentException {
+  public void visit(HandGear handGear) throws NullPointerException {
     if (Objects.isNull(handGear)) {
-      throw new IllegalArgumentException("Hand Gear value cannot be null");
+      throw new NullPointerException("Hand Gear value cannot be null");
     }
     StrengthHandler strengthHandler = new StrengthHandler();
     handGear.getStrength().accept(strengthHandler);
@@ -77,9 +77,9 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(Jewelry jewelry) throws IllegalArgumentException {
+  public void visit(Jewelry jewelry) throws NullPointerException {
     if (Objects.isNull(jewelry)) {
-      throw new IllegalArgumentException("Jewellry value cannot be null");
+      throw new NullPointerException("Jewellry value cannot be null");
     }
     StrengthHandler strengthHandler = new StrengthHandler();
     jewelry.getStrength().accept(strengthHandler);

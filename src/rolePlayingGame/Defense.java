@@ -3,17 +3,17 @@ package rolePlayingGame;
 import java.util.Objects;
 
 /**
- * Attack, it is the attack value of either gear or the character.
+ * Defense, it is the defense value of either gear or the character.
  */
-public class Attack extends AbstractStrength {
+public class Defense extends AbstractStrength {
   /**
-   * Constructs a Attack in terms of attack strength.
+   * Constructs a Defense in terms of defense strength.
    *
-   * @param attackStrength It is the attack strength.
-   * @throws NullPointerException If attack Strength value is null.
+   * @param attackStrength It is the defense strength.
+   * @throws NullPointerException If defense Strength value is null.
    */
-  public Attack(int attackStrength) {
-    super(Objects.requireNonNull(attackStrength, "Attack Strength value cannot be null"));
+  public Defense(int defenceStrength) {
+    super(Objects.requireNonNull(defenceStrength, "Defence Strength value cannot be null"));
   }
 
   @Override
@@ -23,14 +23,14 @@ public class Attack extends AbstractStrength {
     }
     if (other instanceof AbstractStrength) {
       AbstractStrength strength = (AbstractStrength) other;
-      return strength.compareToAttack(this);
+      return strength.compareToDefense(this);
     } else {
-      return 1;
+      return -1;
     }
   }
 
   @Override
-  protected int compareToAttack(Attack other) {
+  protected int compareToDefense(Defense other) {
     return Objects.requireNonNull(other.getStrength(), "Strength value cannot be null")
         .compareTo(Objects.requireNonNull(this.getStrength(), "Strength value cannot be null"));
   }

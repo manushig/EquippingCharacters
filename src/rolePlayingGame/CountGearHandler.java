@@ -2,6 +2,14 @@ package rolePlayingGame;
 
 import java.util.Objects;
 
+/**
+ * CountGearHandler, manages the count of gear a character is wearing .
+ * <ul>
+ * <li>Character can have maximum of 1 Head Gear, 2 Foot wears, 10 Hand Gears
+ * and no limit on Jewelry.
+ * </ul>
+ */
+
 public class CountGearHandler implements GearVisitor {
   private int headGearCount = 0;
   private int handGearCount = 0;
@@ -9,49 +17,69 @@ public class CountGearHandler implements GearVisitor {
   private int JewelryCount = 0;
 
   @Override
-  public void visit(HeadGear headGear) throws IllegalArgumentException {
+  public void visit(HeadGear headGear) throws NullPointerException {
     if (Objects.isNull(headGear)) {
-      throw new IllegalArgumentException("Head Gear value cannot be null");
+      throw new NullPointerException("Head Gear value cannot be null");
     }
-    headGearCount += headGear.getCount();
+    headGearCount = headGearCount + 1;
   }
 
   @Override
-  public void visit(Footwear footwear) throws IllegalArgumentException {
+  public void visit(Footwear footwear) throws NullPointerException {
     if (Objects.isNull(footwear)) {
-      throw new IllegalArgumentException("Footwear value cannot be null");
+      throw new NullPointerException("Footwear value cannot be null");
     }
-    footwearCount += footwear.getCount();
+    footwearCount = footwearCount + 1;
   }
 
   @Override
-  public void visit(HandGear handGear) throws IllegalArgumentException {
+  public void visit(HandGear handGear) throws NullPointerException {
     if (Objects.isNull(handGear)) {
-      throw new IllegalArgumentException("Hand Gear value cannot be null");
+      throw new NullPointerException("Hand Gear value cannot be null");
     }
-    handGearCount += handGear.getCount();
+    handGearCount = handGearCount + 1;
   }
 
   @Override
-  public void visit(Jewelry jewelry) throws IllegalArgumentException {
+  public void visit(Jewelry jewelry) throws NullPointerException {
     if (Objects.isNull(jewelry)) {
-      throw new IllegalArgumentException("Jewellry value cannot be null");
+      throw new NullPointerException("Jewellry value cannot be null");
     }
-    JewelryCount += jewelry.getCount();
+    JewelryCount = JewelryCount + 1;
   }
 
+  /**
+   * This method gets the count of head gear a character is wearing.
+   * 
+   * @return the head gear count.
+   */
   public int getHeadGearCount() {
     return headGearCount;
   }
 
+  /**
+   * This method gets the count of hand gear a character is wearing.
+   * 
+   * @return the hand gear count.
+   */
   public int getHandGearCount() {
     return handGearCount;
   }
 
+  /**
+   * This method gets the count of foot wear a character is wearing.
+   * 
+   * @return the foot wear count.
+   */
   public int getFootwearCount() {
     return footwearCount;
   }
 
+  /**
+   * This method gets the count of jewelry a character is wearing.
+   * 
+   * @return the jewelry count.
+   */
   public int getJewelryCount() {
     return JewelryCount;
   }

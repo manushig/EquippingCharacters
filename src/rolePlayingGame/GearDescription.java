@@ -11,6 +11,11 @@ public class GearDescription {
     this.itemsFullName = Objects.requireNonNull(fullName, "Full Name value cannot be null");
     this.itemsAdjective = Objects.requireNonNull(adjective, "Adjective value cannot be null");
   }
+  
+  public GearDescription(GearDescription gearDescriptionToCopy) {
+    this.itemsFullName = gearDescriptionToCopy.itemsFullName;
+    this.itemsAdjective = gearDescriptionToCopy.itemsAdjective;
+  }  
 
   @Override
   public String toString() {

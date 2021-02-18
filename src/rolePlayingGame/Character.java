@@ -8,22 +8,35 @@ import java.util.Objects;
 
 import javafx.util.Pair;
 
+/**
+ * Character, characters will be able to enhance their basic abilities by
+ * "wearing" different items.
+ */
 public class Character implements ICharacter {
   private String characterName;
-  private IStrength characterAttackPower;
-  private IStrength characterDefencePower;
+  private IStrength characterAttackStrength;
+  private IStrength characterDefenseStrength;
   private int currentHeadGearCount;
   private int currentHandGearCount;
   private int currentFootWearCount;
   private List<IGear> itemsCurrentlyWearingList;
   private List<GearDiscarded> itemsDiscardedList;
 
+  /**
+   * Constructs a Character in terms of its name, attack and defense strengths.
+   *
+   * @param characterName         It is the Character Name.
+   * @param characterAttackPower  It is the Character Attack Strength.
+   * @param characterDefencePower It is the Character Defense Strength.
+   * @throws NullPointerException If Character Name, Attack and Defense strength
+   *                              values are null.
+   */
   public Character(String characterName, int characterAttackPower, int characterDefencePower) {
     this.characterName = Objects.requireNonNull(characterName, "Character Name cannot be null");
-    this.characterAttackPower = new Attack(
-        Objects.requireNonNull(characterAttackPower, "Character Attack Power cannot be null"));
-    this.characterDefencePower = new Defence(
-        Objects.requireNonNull(characterDefencePower, "Character Defence Power cannot be null"));
+    this.characterAttackStrength = new Attack(
+        Objects.requireNonNull(characterAttackPower, "Character Attack Strength cannot be null"));
+    this.characterDefenseStrength = new Defense(
+        Objects.requireNonNull(characterDefencePower, "Character Defence Strength cannot be null"));
     this.itemsCurrentlyWearingList = new ArrayList<IGear>();
     this.itemsDiscardedList = new ArrayList<GearDiscarded>();
     this.currentHandGearCount = 0;
@@ -32,9 +45,9 @@ public class Character implements ICharacter {
   }
 
   @Override
-  public ICharacter dressUpGear(IGear gear) throws IllegalArgumentException {
+  public ICharacter dressUpGear(IGear gear) throws NullPointerException {
     if (Objects.isNull(gear)) {
-      throw new IllegalArgumentException("Gear value cannot be null");
+      throw new NullPointerException("Gear value cannot be null");
     }
     CountGearHandler countGearHandler = new CountGearHandler();
 
@@ -50,7 +63,8 @@ public class Character implements ICharacter {
         this.currentHandGearCount, this.currentFootWearCount);
     gear.accept(isGearAllowedHandler);
 
-    if (isGearAllowedHandler.getIsAllowed()) {
+    if (Objects.requireNonNull(isGearAllowedHandler.getIsAllowed(),
+        "IsGearAllowed value cannot be null")) {
       this.itemsCurrentlyWearingList.add(gear);
     } else {
       Collections.sort(this.itemsCurrentlyWearingList);
@@ -83,7 +97,7 @@ public class Character implements ICharacter {
   }
 
   @Override
-  public String printCharacterDetails() {
+  public String getCharacterDetails() {
 
     StringBuilder characterDescription = new StringBuilder();
 
@@ -101,6 +115,11 @@ public class Character implements ICharacter {
     return characterDescription.toString();
   }
 
+  /**
+   * Private Helper method to print total Strength of the character.
+   *
+   * @return String to print total Strength of the character
+   */
   private String getStrength() {
     StringBuilder strength = new StringBuilder();
     int totalAttackStrength = 0;
@@ -117,6 +136,11 @@ public class Character implements ICharacter {
     return strength.toString();
   }
 
+  /**
+   * Private Helper method to print what character is wearing.
+   *
+   * @return String to print what character is wearing
+   */
   private String getCharacterWearing() {
     CharacterWearingHandler characterWearingHandler = new CharacterWearingHandler();
     StringBuilder characterWearing = new StringBuilder();
@@ -128,10 +152,14 @@ public class Character implements ICharacter {
     for (IGear item : itemsCurrentlyWearingList) {
       item.accept(characterWearingHandler);
     }
-    headGearDescription = characterWearingHandler.getHeadGearDescription();
-    footWearDescription = characterWearingHandler.getFootWearDescription();
-    handGearDescription = characterWearingHandler.getHandGearDescription();
-    jewelryDescription = characterWearingHandler.getJewelryDescription();
+    headGearDescription = Objects.requireNonNull(characterWearingHandler.getHeadGearDescription(),
+        "Head Gear Description value cannot be null");
+    footWearDescription = Objects.requireNonNull(characterWearingHandler.getFootWearDescription(),
+        "Footwear Description value cannot be null");
+    handGearDescription = Objects.requireNonNull(characterWearingHandler.getHandGearDescription(),
+        "Hand Gear Description value cannot be null");
+    jewelryDescription = Objects.requireNonNull(characterWearingHandler.getJewelryDescription(),
+        "Jewellry Description value cannot be null");
 
     if (!headGearDescription.equals("")) {
       headGearDescription = String.format(headGearDescription + "\n");
@@ -178,6 +206,11 @@ public class Character implements ICharacter {
     return characterWearing.toString();
   }
 
+  /**
+   * Private Helper method to print discarded gear list.
+   *
+   * @return String to print discarded gear list
+   */
   private String getDiscaredItemsList() {
     StringBuilder stringBuilder = new StringBuilder();
 
@@ -191,6 +224,13 @@ public class Character implements ICharacter {
     return stringBuilder.toString();
   }
 
+  /**
+   * Private Helper method to get total character hit points which include
+   * Character Attack Value and Character Defense Value.
+   *
+   * @return total character hit points which include Character Attack Value and
+   *         Character Defense Value.
+   */
   private Pair<Integer, Integer> getTotalStrengthValues(int round) {
 
     GearStrengthHandler gearStrengthHandler = new GearStrengthHandler(round);
@@ -206,24 +246,29 @@ public class Character implements ICharacter {
       item.accept(gearStrengthHandler);
     }
 
-    gearTotalAttackStrength = gearStrengthHandler.getTotalattackValue();
-    gearTotalDefenceStrength = gearStrengthHandler.getTotaldefenceValue();
+    gearTotalAttackStrength = Objects.requireNonNull(gearStrengthHandler.getTotalattackValue(),
+        "Total Attack value cannot be null");
+    gearTotalDefenceStrength = Objects.requireNonNull(gearStrengthHandler.getTotaldefenceValue(),
+        "Total Defence value cannot be null");
 
     StrengthHandler strengthHandler = new StrengthHandler();
-    this.characterAttackPower.accept(strengthHandler);
-    this.characterDefencePower.accept(strengthHandler);
+    this.characterAttackStrength.accept(strengthHandler);
+    this.characterDefenseStrength.accept(strengthHandler);
 
-    totalAttackStrength = strengthHandler.getAttackStrengthValue() + gearTotalAttackStrength;
-    totalDefenceStrength = strengthHandler.getDefenceStrengthValue() + gearTotalDefenceStrength;
+    totalAttackStrength = Objects.requireNonNull(strengthHandler.getAttackStrengthValue(),
+        "Attack Strength value cannot be null") + gearTotalAttackStrength;
+    totalDefenceStrength = Objects.requireNonNull(strengthHandler.getDefenceStrengthValue(),
+        "Defence Strength value cannot be null") + gearTotalDefenceStrength;
 
     gearTotalStrength = new Pair<>(totalAttackStrength, totalDefenceStrength);
     return gearTotalStrength;
   }
 
   @Override
-  public Pair<Integer, Integer> characterHitPoints(int round) throws IllegalArgumentException {
+  public Pair<Integer, Integer> characterHitPoints(int round)
+      throws NullPointerException, IllegalArgumentException {
     if (Objects.isNull(round)) {
-      throw new IllegalArgumentException("Round value cannot be null");
+      throw new NullPointerException("Round value cannot be null");
     }
     if (round == 0) {
       throw new IllegalArgumentException("Round value cannot be 0");
