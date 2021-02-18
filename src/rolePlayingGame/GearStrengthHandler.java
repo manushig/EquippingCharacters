@@ -1,12 +1,17 @@
 package rolePlayingGame;
 
+import java.util.Objects;
+
 public class GearStrengthHandler implements GearVisitor {
   private int totalDefenceValue = 0;
   private int totalAttackValue = 0;
   private Integer currentRound;
 
-  public GearStrengthHandler(int round) {
-    this.currentRound = round;
+  public GearStrengthHandler(int round) throws IllegalArgumentException {
+    if (round == 0) {
+      throw new IllegalArgumentException("Round value cannot be zero");
+    }
+    this.currentRound = Objects.requireNonNull(round, "Round value cannnot be null");
   }
 
   public int getTotaldefenceValue() {
@@ -18,7 +23,10 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(HeadGear headGear) {
+  public void visit(HeadGear headGear) throws IllegalArgumentException {
+    if (Objects.isNull(headGear)) {
+      throw new IllegalArgumentException("Head Gear value cannot be null");
+    }
     StrengthHandler strengthHandler = new StrengthHandler();
     headGear.getStrength().accept(strengthHandler);
 
@@ -30,7 +38,10 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(Footwear footwear) {
+  public void visit(Footwear footwear) throws IllegalArgumentException {
+    if (Objects.isNull(footwear)) {
+      throw new IllegalArgumentException("Footwear value cannot be null");
+    }
     StrengthHandler strengthHandler = new StrengthHandler();
     footwear.getStrength().accept(strengthHandler);
 
@@ -42,7 +53,10 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(HandGear handGear) {
+  public void visit(HandGear handGear) throws IllegalArgumentException {
+    if (Objects.isNull(handGear)) {
+      throw new IllegalArgumentException("Hand Gear value cannot be null");
+    }
     StrengthHandler strengthHandler = new StrengthHandler();
     handGear.getStrength().accept(strengthHandler);
 
@@ -63,7 +77,10 @@ public class GearStrengthHandler implements GearVisitor {
   }
 
   @Override
-  public void visit(Jewelry jewelry) {
+  public void visit(Jewelry jewelry) throws IllegalArgumentException {
+    if (Objects.isNull(jewelry)) {
+      throw new IllegalArgumentException("Jewellry value cannot be null");
+    }
     StrengthHandler strengthHandler = new StrengthHandler();
     jewelry.getStrength().accept(strengthHandler);
 

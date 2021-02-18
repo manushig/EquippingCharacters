@@ -1,13 +1,15 @@
 package rolePlayingGame;
 
+import java.util.Objects;
+
 public class GearDescription {
 
   private String itemsFullName;
   private String itemsAdjective;
 
   public GearDescription(String fullName, String adjective) {
-    this.itemsFullName = fullName;
-    this.itemsAdjective = adjective;
+    this.itemsFullName = Objects.requireNonNull(fullName, "Full Name value cannot be null");
+    this.itemsAdjective = Objects.requireNonNull(adjective, "Adjective value cannot be null");
   }
 
   @Override
@@ -22,6 +24,5 @@ public class GearDescription {
   public String getItemsAdjective() {
     return this.itemsAdjective;
   }
-  
-  
+
 }

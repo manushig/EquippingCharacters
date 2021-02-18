@@ -1,11 +1,13 @@
 package rolePlayingGame;
 
+import java.util.Objects;
+
 public abstract class AbstractStrength implements IStrength {
 
   private Integer strength;
 
   protected AbstractStrength(Integer strength) {
-    this.strength = strength;
+    this.strength = Objects.requireNonNull(strength,"Strength value cannot be null");
   }
 
   @Override

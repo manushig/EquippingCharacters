@@ -1,28 +1,42 @@
 package rolePlayingGame;
 
-public class CountGearHandler implements GearVisitor{
+import java.util.Objects;
+
+public class CountGearHandler implements GearVisitor {
   private int headGearCount = 0;
   private int handGearCount = 0;
   private int footwearCount = 0;
   private int JewelryCount = 0;
 
   @Override
-  public void visit(HeadGear headGear) {
+  public void visit(HeadGear headGear) throws IllegalArgumentException {
+    if (Objects.isNull(headGear)) {
+      throw new IllegalArgumentException("Head Gear value cannot be null");
+    }
     headGearCount += headGear.getCount();
   }
 
   @Override
-  public void visit(Footwear footwear) {
+  public void visit(Footwear footwear) throws IllegalArgumentException {
+    if (Objects.isNull(footwear)) {
+      throw new IllegalArgumentException("Footwear value cannot be null");
+    }
     footwearCount += footwear.getCount();
   }
 
   @Override
-  public void visit(HandGear handGear) {
+  public void visit(HandGear handGear) throws IllegalArgumentException {
+    if (Objects.isNull(handGear)) {
+      throw new IllegalArgumentException("Hand Gear value cannot be null");
+    }
     handGearCount += handGear.getCount();
   }
 
   @Override
-  public void visit(Jewelry jewelry) {
+  public void visit(Jewelry jewelry) throws IllegalArgumentException {
+    if (Objects.isNull(jewelry)) {
+      throw new IllegalArgumentException("Jewellry value cannot be null");
+    }
     JewelryCount += jewelry.getCount();
   }
 
@@ -41,9 +55,5 @@ public class CountGearHandler implements GearVisitor{
   public int getJewelryCount() {
     return JewelryCount;
   }
-
-
-  
-  
 
 }
