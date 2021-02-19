@@ -8,8 +8,10 @@ import java.util.Objects;
 import javafx.util.Pair;
 
 /**
- * Character, characters will be able to enhance their basic abilities by
- * "wearing" different items.
+ * Character class defines the attack and defense strength of a character
+ * created, it also holds the lift of gears/items the character is wearing,
+ * characters will be able to enhance their basic abilities by "wearing"
+ * different items.
  */
 public class Character implements ICharacter {
   private final int characterHitPoints;
@@ -24,8 +26,6 @@ public class Character implements ICharacter {
    * @param characterName         It is the Character Name.
    * @param characterAttackPower  It is the Character Attack Strength.
    * @param characterDefencePower It is the Character Defense Strength.
-   * @throws NullPointerException If Character Name, Attack and Defense strength
-   *                              values are null.
    */
   public Character(String characterName, int characterAttackPower, int characterDefencePower,
       int characterHitPoints) {
@@ -112,9 +112,9 @@ public class Character implements ICharacter {
   }
 
   /**
-   * Private Helper method to print total Strength of the character.
+   * Private Helper method to get total Strength of the character.
    *
-   * @return String to print total Strength of the character
+   * @return String of total Strength of the character which will be used for printing
    */
   private String getStrength() {
     StringBuilder strength = new StringBuilder();
@@ -133,9 +133,9 @@ public class Character implements ICharacter {
   }
 
   /**
-   * Private Helper method to print what character is wearing.
+   * Private Helper method to get what character is wearing in String format.
    *
-   * @return String to print what character is wearing
+   * @return String of what character is wearing which can be used in printing
    */
   private String getCharacterWearing() {
     CharacterWearingHandler characterWearingHandler = new CharacterWearingHandler();
@@ -204,8 +204,9 @@ public class Character implements ICharacter {
 
   /**
    * Private Helper method to get total character hit points which include
-   * Character Attack Value and Character Defense Value.
-   *
+   * character attack Value and character defense value.
+   * 
+   * @param round This is round number of the match.
    * @return total character hit points which include Character Attack Value and
    *         Character Defense Value.
    */
@@ -256,20 +257,19 @@ public class Character implements ICharacter {
   public String toString() {
     return this.characterName;
   }
-  
+
   @Override
   public int getCharacterHitPoints() {
     return this.characterHitPoints;
   }
-  
+
   private enum MatchStatus {
     PLAYER_1_WINNER, PLAYER_2_WINNER, TIE;
   }
-  
+
   @Override
-  public String predictWinner(ICharacter player2)
-      throws IllegalArgumentException {
-    
+  public String predictWinner(ICharacter player2) throws IllegalArgumentException {
+
     if (Objects.isNull(player2)) {
       throw new IllegalArgumentException("Player2 value cannot be null");
     }
@@ -373,17 +373,17 @@ public class Character implements ICharacter {
     String result = "";
 
     switch (matchResult) {
-      case TIE:
-        result = String.format("Its a tie after %d rounds.", round);
-        break;
-      case PLAYER_1_WINNER:
-        result = String.format("%s is a winner, lasted %d rounds.", this.characterName, round);
-        break;
-      case PLAYER_2_WINNER:
-        result = String.format("%s is a winner, lasted %d rounds.", player2Name, round);
-        break;
-      default:
-        result = String.format("Something went wrong. Try again");
+    case TIE:
+      result = String.format("Its a tie after %d rounds.", round);
+      break;
+    case PLAYER_1_WINNER:
+      result = String.format("%s is a winner, lasted %d rounds.", this.characterName, round);
+      break;
+    case PLAYER_2_WINNER:
+      result = String.format("%s is a winner, lasted %d rounds.", player2Name, round);
+      break;
+    default:
+      result = String.format("Something went wrong. Try again");
     }
 
     return result;

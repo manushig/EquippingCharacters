@@ -10,7 +10,6 @@ public class Defense extends AbstractStrength {
    * Constructs a Defense in terms of defense strength.
    *
    * @param defenceStrength It is the defense strength.
-   * @throws NullPointerException If defense Strength value is null.
    */
   public Defense(int defenceStrength) {
     super(Objects.requireNonNull(defenceStrength, "Defence Strength value cannot be null"));

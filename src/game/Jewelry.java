@@ -15,8 +15,6 @@ public class Jewelry extends AbstractGear {
    * @param gearAdjectiveName It is the adjective name of the Jewelry.
    * @param wornOutPercentage It is the worn out percentage of the Jewelry.
    * @param gearStrength      It is the strength of the Jewelry.
-   * @throws NullPointerException If Jewelry Full Name or Adjective Name or
-   *                              Strength values are null.
    */
   public Jewelry(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       IStrength gearStrength) {

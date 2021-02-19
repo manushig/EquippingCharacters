@@ -15,7 +15,6 @@ public class GearDescription {
    *
    * @param fullName  It is the gear's fullName.
    * @param adjective It is the gear's adjective name.
-   * @throws NullPointerException If gear's full name or adjective value is null.
    */
   public GearDescription(String fullName, String adjective) {
     this.itemsFullName = Objects.requireNonNull(fullName, "Full Name value cannot be null");
@@ -26,7 +25,7 @@ public class GearDescription {
    * Constructs a GearDescription to copy gear's fullName and adjective.
    *
    * @param gearDescriptionToCopy It is GearDescription whose copy needs to make.
-   * @throws NullPointerException If gearDescription to copy value is null
+   * @throws IllegalArgumentException If gearDescription to copy value is null
    */
   public GearDescription(GearDescription gearDescriptionToCopy) throws IllegalArgumentException {
     if (Objects.isNull(gearDescriptionToCopy)) {

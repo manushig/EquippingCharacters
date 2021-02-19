@@ -3,7 +3,7 @@ package game;
 import java.util.Objects;
 
 /**
- * GearAllowedHandler, checks whether a gear can be added to the list without
+ * GearAllowedHandler, checks whether a gear can be added to the list before
  * comparing with the existing list of gears.
  * <ul>
  * <li>Character can have maximum of 1 Head Gear, 2 Foot wears, 10 Hand Gears

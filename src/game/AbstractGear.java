@@ -3,7 +3,7 @@ package game;
 import java.util.Objects;
 
 /**
- * AbstractGear, It is an abstract base class for implementations of
+ * AbstractGear, It is an abstract base class for implementation of
  * {@link IGear}. This class contains all the method definitions that are common
  * to the concrete implementations of the {@link IGear} interface.
  */
@@ -20,8 +20,6 @@ public abstract class AbstractGear implements IGear {
    * @param gearAdjectiveName It is the adjective name of the gear.
    * @param wornOutPercentage It is the worn out percentage of the gear.
    * @param strength          It is the strength of the gear.
-   * @throws NullPointerException If Gear Full Name or Gear Adjective Name or
-   *                              Strength values are null.
    */
   public AbstractGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       IStrength strength) {

@@ -15,8 +15,6 @@ public class HeadGear extends AbstractGear {
    * @param gearAdjectiveName   It is the adjective name of the HeadGear.
    * @param wornOutPercentage   It is the worn out percentage of the HeadGear.
    * @param gearDefenceStrength It is the strength of the HeadGear.
-   * @throws NullPointerException If HeadGear Full Name or Adjective Name or
-   *                              Strength values are null.
    */
 
   public HeadGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,

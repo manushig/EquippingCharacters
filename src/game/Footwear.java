@@ -16,8 +16,6 @@ public class Footwear extends AbstractGear {
    * @param gearAdjectiveName  It is the adjective name of the foot wear.
    * @param wornOutPercentage  It is the worn out percentage of the foot wear.
    * @param gearAttackStrength It is the strength of the foot wear.
-   * @throws NullPointerException If foot wear Full Name or Adjective Name or
-   *                              Strength values are null.
    */
 
   public Footwear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,

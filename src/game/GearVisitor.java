@@ -18,7 +18,7 @@ public interface GearVisitor {
    * @param headGear This is an HeadGear object.
    * @throws IllegalArgumentException HeadGear object value is null
    */
-  public void visit(HeadGear headGear);
+  public void visit(HeadGear headGear) throws IllegalArgumentException;
 
   /**
    * This method allows the visitor to visit and access the element of Footwear.
@@ -26,7 +26,7 @@ public interface GearVisitor {
    * @param footwear This is an Footwear object.
    * @throws IllegalArgumentException Footwear object value is null
    */
-  public void visit(Footwear footwear);
+  public void visit(Footwear footwear) throws IllegalArgumentException;
 
   /**
    * This method allows the visitor to visit and access the element of HandGear.
@@ -34,7 +34,7 @@ public interface GearVisitor {
    * @param handGear This is an HandGear object.
    * @throws IllegalArgumentException HandGear object value is null
    */
-  public void visit(HandGear handGear);
+  public void visit(HandGear handGear) throws IllegalArgumentException;
 
   /**
    * This method allows the visitor to visit and access the element of Jewelry.
@@ -42,5 +42,5 @@ public interface GearVisitor {
    * @param jewelry This is an Jewelry object.
    * @throws IllegalArgumentException Jewelry object value is null
    */
-  public void visit(Jewelry jewelry);
+  public void visit(Jewelry jewelry) throws IllegalArgumentException;
 }

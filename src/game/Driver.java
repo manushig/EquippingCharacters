@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Driver program for Role playing game, that dresses two (2) characters and
+ * Driver program for role playing game, that dresses two (2) characters and
  * pits them in a battle.
  */
 public class Driver {
@@ -182,7 +182,7 @@ public class Driver {
   }
 
   /**
-   * Private Helper method to popluate a chest of gear with a minimum of 4 items
+   * Private Helper method to populate the chest of gear with a minimum of 4 items
    * of headgear, 8 items of footwear, 15 items of hand gear, and 15 items of
    * jewelry and Dress each character with a random 20 items from the chest of
    * gear.

@@ -15,7 +15,6 @@ public abstract class AbstractStrength implements IStrength {
    * Constructs a AbstractStrength in terms of strength.
    *
    * @param strength It is the strength of the gear.
-   * @throws NullPointerException If Strength value is null.
    */
   protected AbstractStrength(Integer strength) {
     this.strength = Objects.requireNonNull(strength, "Strength value cannot be null");

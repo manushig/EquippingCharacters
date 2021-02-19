@@ -27,7 +27,7 @@ public interface ICharacter {
    * @return an ICharacter object.
    * @throws IllegalArgumentException If IsGearAllowed or gear values are null
    */
-  public String dressUpGear(IGear gear);
+  public String dressUpGear(IGear gear) throws IllegalArgumentException;
 
   /**
    * Get details of the character in the battle along with what they are wearing
@@ -47,7 +47,7 @@ public interface ICharacter {
    * 
    * @throws IllegalArgumentException If Round value is 0 or null
    */
-  public Pair<Integer, Integer> characterTotalStrength(int round);
+  public Pair<Integer, Integer> characterTotalStrength(int round) throws IllegalArgumentException;
 
   /**
    * Get details of the character hit points value.
@@ -64,5 +64,5 @@ public interface ICharacter {
    * @return a prediction of the battle
    * @throws IllegalArgumentException If Player2 value is null
    */
-  public String predictWinner(ICharacter player2);
+  public String predictWinner(ICharacter player2) throws IllegalArgumentException;
 }

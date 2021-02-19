@@ -15,8 +15,6 @@ public class HandGear extends AbstractGear {
    * @param gearAdjectiveName It is the adjective name of the HandGear.
    * @param wornOutPercentage It is the worn out percentage of the HandGear.
    * @param gearStrength      It is the strength of the HandGear.
-   * @throws NullPointerException If HandGear Full Name or Adjective Name or or
-   *                              Strength values are null.
    */
 
   public HandGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,

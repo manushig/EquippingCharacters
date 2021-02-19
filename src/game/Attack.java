@@ -7,10 +7,9 @@ import java.util.Objects;
  */
 public class Attack extends AbstractStrength {
   /**
-   * Constructs a Attack in terms of attack strength.
+   * Constructs a attack in terms of attack strength.
    *
    * @param attackStrength It is the attack strength.
-   * @throws NullPointerException If attack Strength value is null.
    */
   public Attack(int attackStrength) {
     super(Objects.requireNonNull(attackStrength, "Attack Strength value cannot be null"));

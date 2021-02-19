@@ -1,0 +1,236 @@
+********************Characters are wearing items********************
+
+Alice wore Fingerless Gloves of Rain
+Alice wore Ring of Invisibility
+Alice wore Bangles of Telepathy
+Alice wore Fingerless Gloves of Rain
+Alice wore Cowl of Explosion
+Alice wore Scarab of Burning
+Alice wore Fingerless Gloves of Rain
+Alice wore Ribbon of Magic
+Alice wore Scarab of Burning
+Alice wore Pendant of Ruin
+Alice wore Chain of Telepathy
+Alice wore FitBand of Speed
+Alice wore Slippers of Swimming
+Alice wore FitBand of Speed
+Alice wore Sneakers of Sleep
+Alice wore Gloves of Holding
+Alice wore Mask of Flight
+Alice wore Scarab of Burning
+Alice discarded Slippers of Swimming replaced by Boots of Momentum
+Alice wore Necklace of Sight
+
+
+Bob wore Mask of Flight
+Bob wore Collar of Teleportation
+Bob wore Bracer of Storm
+Bob wore Mittens of Disguise
+Bob wore Cowl of Explosion
+Bob wore Shoes of Drunkeness
+Bob wore Brass Knuckles of Shock
+Bob wore Gloves of Holding
+Bob wore BowTie of Escape
+Bob discarded Mask of Flight
+Bob wore Watch of Explosion
+Bob wore Scarab of Burning
+Bob wore Hoverboard of Heft
+Bob wore Ribbon of Magic
+Bob wore Torc of Flame
+Bob wore Bracelets of Flame
+Bob wore Pendant of Ruin
+Bob wore Tie of Healing
+Bob discarded Mask of Flight replaced by Helmet of Strength
+Bob wore Gloves of Holding
+
+
+********************Character Alice Details********************
+
+Name: Alice
+
+Head Gear : Mask of Flight
+Footwear : Boots of Momentum and Sleep
+Hand Gear : Bangles of Telepathy, Rain, Rain, Rain, Invisibility, Holding, Speed and Speed
+Jewelry : Pendant of Ruin, Telepathy, Magic, Explosion, Burning, Burning, Burning and Sight
+
+Attack Strength: 87
+Defence Strength: 140
+
+********************Character Bob Details********************
+
+Name: Bob
+
+Head Gear : Helmet of Strength
+Footwear : Shoes of Drunkeness and Heft
+Hand Gear : Bracer of Storm, Disguise, Shock, Holding, Explosion, Flame and Holding
+Jewelry : Collar of Teleportation, Explosion, Escape, Burning, Magic, Flame, Ruin and Healing
+
+Attack Strength: 88
+Defence Strength: 125
+
+*************** Battle Prediction ***************
+
+Alice is a winner, lasted 4 rounds.
+
+
+Do you want a rematch? Reply Yes/No
+Yes
+********************Characters are wearing items********************
+
+Alice wore Gloves of Holding
+Alice wore WristBand of Persuasion
+Alice wore Carcanet of Sleep
+Alice wore Headband of Shock
+Alice wore Hoverboard of Heft
+Alice wore Watch of Explosion
+Alice wore Signet of Ambush
+Alice wore Brass Knuckles of Shock
+Alice wore Sandals of Speed
+Alice wore Torc of Flame
+Alice wore Brooch of Ice
+Alice discarded Cap of Electricity
+Alice wore WristBand of Persuasion
+Alice wore Chain of Telepathy
+Alice wore Ring of Invisibility
+Alice wore Mittens of Disguise
+Alice wore Mittens of Disguise
+Alice wore FitBand of Speed
+Alice discarded Gloves of Holding replaced by Mittens of Disguise
+Alice discarded Cap of Electricity
+
+
+Bob wore Shoes of Drunkeness
+Bob wore Torc of Flame
+Bob wore WristBand of Persuasion
+Bob wore FingerRings of Sight
+Bob wore Necklace of Sight
+Bob wore WristBand of Persuasion
+Bob wore Carcanet of Sleep
+Bob wore Ring of Invisibility
+Bob wore Bracer of Storm
+Bob wore Cowl of Explosion
+Bob wore Collar of Teleportation
+Bob wore FitBand of Speed
+Bob wore FingerRings of Sight
+Bob wore RollerBlades of Sight
+Bob discarded Hoverboard of Heft
+Bob wore Tie of Healing
+Bob discarded Hoverboard of Heft
+Bob discarded Sneakers of Sleep
+Bob wore Brooch of Ice
+Bob discarded RollerBlades of Sight replaced by Sandals of Speed
+
+
+********************Character Alice Details********************
+
+Name: Alice
+
+Head Gear : Headband of Shock
+Footwear : Hoverboard of Heft and Speed
+Hand Gear : WristBand of Persuasion, Disguise, Shock, Explosion, Ambush, Persuasion, Invisibility, Disguise, Disguise and Speed
+Jewelry : Carcanet of Sleep, Ice, Flame and Telepathy
+
+Attack Strength: 106
+Defence Strength: 60
+
+********************Character Bob Details********************
+
+Name: Bob
+
+Footwear : Shoes of Drunkeness and Speed
+Hand Gear : Bracer of Storm, Invisibility, Sight, Persuasion, Persuasion, Sight and Speed
+Jewelry : Torc of Flame, Sight, Sleep, Explosion, Teleportation, Ice and Healing
+
+Attack Strength: 84
+Defence Strength: 70
+
+*************** Battle Prediction ***************
+
+Its a tie after 3 rounds.
+
+
+Do you want a rematch? Reply Yes/No
+No
+No rematch
+
+PS C:\Manushi\ProjectsWorkSpace\EquippingCharacters\res> java -jar .\EquippingCharacters.jar
+********************Characters are wearing items********************
+
+Alice wore Ring of Invisibility
+Alice wore Boots of Momentum
+Alice wore Collar of Teleportation
+Alice wore Tie of Healing
+Alice wore BowTie of Escape
+Alice wore Bracelets of Flame
+Alice wore Ribbon of Magic
+Alice wore Boots of Momentum
+Alice wore Ribbon of Magic
+Alice discarded Sneakers of Sleep
+Alice wore Brass Knuckles of Shock
+Alice wore FingerRings of Sight
+Alice wore WristBand of Persuasion
+Alice wore Signet of Ambush
+Alice wore Mittens of Disguise
+Alice wore Cap of Electricity
+Alice discarded Sneakers of Sleep
+Alice wore Ribbon of Magic
+Alice wore Necklace of Sight
+Alice discarded Boots of Momentum replaced by Sandals of Speed
+
+
+Bob wore Scarab of Burning
+Bob wore Brass Knuckles of Shock
+Bob wore Shoes of Drunkeness
+Bob wore Fingerless Gloves of Rain
+Bob wore Chain of Telepathy
+Bob wore Bracer of Storm
+Bob wore Gloves of Holding
+Bob wore FingerRings of Sight
+Bob wore Brass Knuckles of Shock
+Bob wore Helmet of Strength
+Bob wore Torc of Flame
+Bob wore Bracer of Storm
+Bob wore BowTie of Escape
+Bob wore Fingerless Gloves of Rain
+Bob wore Boots of Momentum
+Bob wore Scarab of Burning
+Bob discarded Sneakers of Sleep
+Bob discarded Sneakers of Sleep
+Bob wore Bracelets of Flame
+Bob wore Handcuffs of Passion
+
+
+********************Character Alice Details********************
+
+Name: Alice
+
+Head Gear : Cap of Electricity
+Footwear : Sandals of Speed and Momentum
+Hand Gear : Ring of Invisibility, Flame, Shock, Sight, Persuasion, Ambush and Disguise
+Jewelry : BowTie of Escape, Magic, Magic, Healing, Teleportation, Magic and Sight
+
+Attack Strength: 91
+Defence Strength: 54
+
+********************Character Bob Details********************
+
+Name: Bob
+
+Head Gear : Helmet of Strength
+Footwear : Shoes of Drunkeness and Momentum
+Hand Gear : Brass Knuckles of Shock, Shock, Holding, Storm, Rain, Storm, Sight, Rain, Flame and Passion
+Jewelry : Scarab of Burning, Telepathy, Escape, Flame and Burning
+
+Attack Strength: 47
+Defence Strength: 107
+
+*************** Battle Prediction ***************
+
+Bob is a winner, lasted 7 rounds.
+
+
+Do you want a rematch? Reply Yes/No
+Nooo
+Wrong input given. No rematch
+
+PS C:\Manushi\ProjectsWorkSpace\EquippingCharacters\res>

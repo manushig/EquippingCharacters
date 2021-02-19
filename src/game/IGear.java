@@ -1,7 +1,7 @@
 package game;
 
 /**
- * IGear, it is a place where it maintains the items details.
+ * IGear, it is a place where it maintains the gear/items details.
  * <ul>
  * <li>Head gear: These items go on the character’s head (hats/helmets/visors)
  * and are only useful for defense.
@@ -23,7 +23,6 @@ public interface IGear extends Comparable<IGear> {
    * This method allows the visitor access to the element.
    * 
    * @param visitor This is a visitor which requires the access to the element.
-   * @throws NullPointerException If Visitor Value is null.
    */
   public void accept(GearVisitor visitor);
 }
