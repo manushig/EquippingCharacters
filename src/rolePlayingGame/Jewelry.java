@@ -15,15 +15,14 @@ public class Jewelry extends AbstractGear {
    * @param gearAdjectiveName It is the adjective name of the Jewelry.
    * @param wornOutPercentage It is the worn out percentage of the Jewelry.
    * @param strength          It is the strength of the Jewelry.
-   * @throws NullPointerException If Jewelry Full Name or Adjective Name or Worn
-   *                              out percentage or Strength values are null.
+   * @throws NullPointerException If Jewelry Full Name or Adjective Name or
+   *                              Strength values are null.
    */
   public Jewelry(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       IStrength gearStrength) {
     super(Objects.requireNonNull(gearFullName, "Gear Full Name value cannot be null"),
         Objects.requireNonNull(gearAdjectiveName, "Gear Adjective Name value cannot be null"),
-        Objects.requireNonNull(wornOutPercentage, "Gear wornout percentage value cannot be null"),
-        Objects.requireNonNull(gearStrength, "Gear Strength cannot be null"));
+        wornOutPercentage, Objects.requireNonNull(gearStrength, "Gear Strength cannot be null"));
   }
 
   @Override
@@ -40,8 +39,19 @@ public class Jewelry extends AbstractGear {
     if (Objects.isNull(other)) {
       throw new NullPointerException("Gear Value cannot be null");
     }
+    if (other instanceof AbstractGear) {
+      AbstractGear gear = (AbstractGear) other;
+      return gear.compareToJewelry(this);
+    } else {
+      return 1;
+    }
+  }
 
-    return -1;
+  @Override
+  protected int compareToJewelry(Jewelry other) {
+    return Objects.requireNonNull(other.getStrength(), "Strength value cannot be null")
+        .compareTo(Objects.requireNonNull(this.getStrength(), "Strength value cannot be null"));
+
   }
 
 }

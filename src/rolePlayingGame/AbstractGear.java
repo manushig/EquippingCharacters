@@ -20,16 +20,15 @@ public abstract class AbstractGear implements IGear {
    * @param gearAdjectiveName It is the adjective name of the gear.
    * @param wornOutPercentage It is the worn out percentage of the gear.
    * @param strength          It is the strength of the gear.
-   * @throws NullPointerException If Gear Full Name or Gear Adjective Name or Worn
-   *                              out percentage or Strength values are null.
+   * @throws NullPointerException If Gear Full Name or Gear Adjective Name or
+   *                              Strength values are null.
    */
   public AbstractGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       IStrength strength) {
     this.gearDescription = new GearDescription(
         Objects.requireNonNull(gearFullName, "Gear Full Name value cannot be null"),
         Objects.requireNonNull(gearAdjectiveName, "Gear Adjective Name value cannot be null"));
-    this.wornOutPercentage = Objects.requireNonNull(wornOutPercentage,
-        "Wornout Percentage value cannot be null");
+    this.wornOutPercentage = wornOutPercentage;
     this.strength = Objects.requireNonNull(strength, "Gear Strength value cannot be null");
   }
 
@@ -60,6 +59,16 @@ public abstract class AbstractGear implements IGear {
    * @return 1 by default, subclasses may override
    */
   protected int compareToFootwear(Footwear other) {
+    return 1;
+  }
+
+  /**
+   * Compare the gear with the Jewelry object.
+   *
+   * @param other the Jewelry object to which this gear must be compared
+   * @return 1 by default, subclasses may override
+   */
+  protected int compareToJewelry(Jewelry other) {
     return 1;
   }
 

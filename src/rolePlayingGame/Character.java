@@ -30,10 +30,8 @@ public class Character implements ICharacter {
    */
   public Character(String characterName, int characterAttackPower, int characterDefencePower) {
     this.characterName = Objects.requireNonNull(characterName, "Character Name cannot be null");
-    this.characterAttackStrength = new Attack(
-        Objects.requireNonNull(characterAttackPower, "Character Attack Strength cannot be null"));
-    this.characterDefenseStrength = new Defense(
-        Objects.requireNonNull(characterDefencePower, "Character Defence Strength cannot be null"));
+    this.characterAttackStrength = new Attack(characterAttackPower);
+    this.characterDefenseStrength = new Defense(characterDefencePower);
     this.itemsCurrentlyWearingList = new ArrayList<IGear>();
     this.itemsDiscardedList = new ArrayList<GearDiscarded>();
   }

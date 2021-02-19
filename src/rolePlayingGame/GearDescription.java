@@ -36,11 +36,6 @@ public class GearDescription {
     this.itemsAdjective = gearDescriptionToCopy.itemsAdjective;
   }
 
-  @Override
-  public String toString() {
-    return String.format(this.itemsFullName + "and " + this.itemsAdjective);
-  }
-
   /**
    * Gets the Gear's Full Name.
    *

@@ -15,15 +15,15 @@ public class HeadGear extends AbstractGear {
    * @param gearAdjectiveName It is the adjective name of the HeadGear.
    * @param wornOutPercentage It is the worn out percentage of the HeadGear.
    * @param strength          It is the strength of the HeadGear.
-   * @throws NullPointerException If HeadGear Full Name or Adjective Name or Worn
-   *                              out percentage or Strength values are null.
+   * @throws NullPointerException If HeadGear Full Name or Adjective Name or
+   *                              Strength values are null.
    */
 
   public HeadGear(String gearFullName, String gearAdjectiveName, int wornOutPercentage,
       IStrength gearDefenceStrength) {
     super(Objects.requireNonNull(gearFullName, "Gear Full Name value cannot be null"),
         Objects.requireNonNull(gearAdjectiveName, "Gear Adjective Name value cannot be null"),
-        Objects.requireNonNull(wornOutPercentage, "Gear wornout percentage value cannot be null"),
+        wornOutPercentage,
         Objects.requireNonNull(gearDefenceStrength, "Gear Defence Strength cannot be null"));
   }
 

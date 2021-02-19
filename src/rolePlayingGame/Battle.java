@@ -110,8 +110,8 @@ public class Battle implements IBattle {
       } else if (player2Health <= 0) {
         matchResult = MatchStatus.PLAYER_1_WINNER;
         IsMatchContinuing = false;
-      } else if ((player1Attack == 0 && player2Attack == 0 && player1Defence == 0
-          && player2Defence == 0) || (round == 50 && IsMatchContinuing)) {
+      } else if (player1Attack == 0 && player2Attack == 0 && player1Defence == 0
+          && player2Defence == 0) {
         if (player1Health > player2Health) {
           matchResult = MatchStatus.PLAYER_1_WINNER;
         } else if (player1Health < player2Health) {
@@ -148,10 +148,10 @@ public class Battle implements IBattle {
       result = String.format("Its a tie after %d rounds.", round);
       break;
     case PLAYER_1_WINNER:
-      result = String.format("%s a winner, survived %d rounds", player1.toString(), round);
+      result = String.format("%s a winner, survived %d rounds.", player1.toString(), round);
       break;
     case PLAYER_2_WINNER:
-      result = String.format("%s a winner, survived %d rounds", player1.toString(), round);
+      result = String.format("%s a winner, survived %d rounds.", player2.toString(), round);
       break;
     default:
       result = String.format("Something went wrong. Try again");
@@ -160,4 +160,8 @@ public class Battle implements IBattle {
     return result;
   }
 
+  @Override
+  public String toString() {
+    return String.format("%s and %s are in battle.", player1.toString(), player2.toString());
+  }
 }

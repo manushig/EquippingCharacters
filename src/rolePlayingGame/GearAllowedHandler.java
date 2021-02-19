@@ -24,20 +24,9 @@ public class GearAllowedHandler implements GearVisitor {
    * @param currentHeadGearCount It is the Current Head Gear Count
    * @param currentHandGearCount It is the Current Hand Gear Count
    * @param currentFootwearCount It is the Current Footwear Count
-   * @throws NullPointerException If Current Head Gear Count or Current Hand Gear
-   *                              Count or Current Footwear Count value is null.
    */
   public GearAllowedHandler(int currentHeadGearCount, int currentHandGearCount,
-      int currentFootwearCount) throws NullPointerException {
-    if (Objects.isNull(currentHeadGearCount)) {
-      throw new NullPointerException("Current Head Gear Count value cannot be null");
-    }
-    if (Objects.isNull(currentHandGearCount)) {
-      throw new NullPointerException("Current Hand Gear Count value cannot be null");
-    }
-    if (Objects.isNull(currentFootwearCount)) {
-      throw new NullPointerException("Current Footwear Count value cannot be null");
-    }
+      int currentFootwearCount) {
     this.currentHeadGearCount = currentHeadGearCount;
     this.currentHandGearCount = currentHandGearCount;
     this.currentFootwearCount = currentFootwearCount;
