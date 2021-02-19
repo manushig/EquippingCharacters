@@ -2,14 +2,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import rolePlayingGame.Attack;
-import rolePlayingGame.Defense;
-import rolePlayingGame.Footwear;
-import rolePlayingGame.GearDescription;
-import rolePlayingGame.HandGear;
-import rolePlayingGame.HeadGear;
-import rolePlayingGame.IGear;
-import rolePlayingGame.Jewelry;
+import game.Attack;
+import game.Defense;
+import game.Footwear;
+import game.HandGear;
+import game.HeadGear;
+import game.IGear;
+import game.Jewelry;
 
 /**
  * A JUnit test class for the IGear.
@@ -42,7 +41,7 @@ public class GearTest {
   }
 
   /**
-   * Test HeadGear created correctly
+   * Test HeadGear created correctly.
    */
 
   @Test
@@ -51,7 +50,7 @@ public class GearTest {
   }
 
   /**
-   * Test HandGear created correctly
+   * Test HandGear created correctly.
    */
 
   @Test
@@ -60,7 +59,7 @@ public class GearTest {
   }
 
   /**
-   * Test Footwear created correctly
+   * Test Footwear created correctly.
    */
 
   @Test
@@ -69,7 +68,7 @@ public class GearTest {
   }
 
   /**
-   * Test Jewelry created correctly
+   * Test Jewelry created correctly.
    */
 
   @Test
@@ -78,7 +77,7 @@ public class GearTest {
   }
 
   /**
-   * Test two HeadGears
+   * Test two HeadGears.
    */
 
   @Test
@@ -89,7 +88,7 @@ public class GearTest {
   }
 
   /**
-   * Test HeadGears with other types of Gear
+   * Test HeadGears with other types of Gear.
    */
 
   @Test
@@ -100,7 +99,7 @@ public class GearTest {
   }
 
   /**
-   * Test two Footwears
+   * Test two Footwears.
    */
 
   @Test
@@ -111,7 +110,7 @@ public class GearTest {
   }
 
   /**
-   * Test Footwears with other types of Gear
+   * Test Footwears with other types of Gear.
    */
 
   @Test
@@ -122,7 +121,7 @@ public class GearTest {
   }
 
   /**
-   * Test two HandGears
+   * Test two HandGears.
    */
 
   @Test
@@ -134,7 +133,7 @@ public class GearTest {
   }
 
   /**
-   * Test HandGears with other types of Gear
+   * Test HandGears with other types of Gear.
    */
 
   @Test
@@ -145,7 +144,7 @@ public class GearTest {
   }
 
   /**
-   * Test two Jewelry
+   * Test two Jewelry.
    */
 
   @Test
@@ -156,7 +155,7 @@ public class GearTest {
   }
 
   /**
-   * Test Jewelry with other types of Gear
+   * Test Jewelry with other types of Gear.
    */
 
   @Test
@@ -167,7 +166,7 @@ public class GearTest {
   }
 
   /**
-   * Test HeadGear Compare with Null
+   * Test HeadGear Compare with Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHeadgearGearsCompareWithNull() {
@@ -175,7 +174,7 @@ public class GearTest {
   }
 
   /**
-   * Test HandGear Compare with Null
+   * Test HandGear Compare with Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHandgearGearsCompareWithNull() {
@@ -183,7 +182,7 @@ public class GearTest {
   }
 
   /**
-   * Test FootWear Compare with Null
+   * Test FootWear Compare with Null.
    */
   @Test(expected = NullPointerException.class)
   public void testFootwearGearsCompareWithNull() {
@@ -191,7 +190,7 @@ public class GearTest {
   }
 
   /**
-   * Test Jewelry Compare with Null
+   * Test Jewelry Compare with Null.
    */
   @Test(expected = NullPointerException.class)
   public void testJewelryGearsCompareWithNull() {
@@ -199,7 +198,7 @@ public class GearTest {
   }
 
   /**
-   * Test HeadGear passing Gear Full Name as Null
+   * Test HeadGear passing Gear Full Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testFeadGearWithFullNameAsNull() {
@@ -207,7 +206,7 @@ public class GearTest {
   }
 
   /**
-   * Test HeadGear passing Gear Adjective Name as Null
+   * Test HeadGear passing Gear Adjective Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHeadGearWithAdjectiveNameAsNull() {
@@ -215,7 +214,7 @@ public class GearTest {
   }
 
   /**
-   * Test HeadGear passing defense value as Null
+   * Test HeadGear passing defense value as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHeadGearWithDefenceAsNull() {
@@ -223,7 +222,7 @@ public class GearTest {
   }
 
   /**
-   * Test HandGear passing Gear Full Name as Null
+   * Test HandGear passing Gear Full Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHandGearWithFullNameAsNull() {
@@ -231,7 +230,7 @@ public class GearTest {
   }
 
   /**
-   * Test HandGear passing Gear Adjective Name as Null
+   * Test HandGear passing Gear Adjective Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHandGearWithAdjectiveNameAsNull() {
@@ -239,7 +238,7 @@ public class GearTest {
   }
 
   /**
-   * Test HandGear passing Strength as Null
+   * Test HandGear passing Strength as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testHandGearWithDefenceAsNull() {
@@ -247,7 +246,7 @@ public class GearTest {
   }
 
   /**
-   * Test FootWear passing Gear Full Name as Null
+   * Test FootWear passing Gear Full Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testFootWearWithFullNameAsNull() {
@@ -255,7 +254,7 @@ public class GearTest {
   }
 
   /**
-   * Test FootWear passing Gear Adjective Name as Null
+   * Test FootWear passing Gear Adjective Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testFootWearWithAdjectiveNameAsNull() {
@@ -263,7 +262,7 @@ public class GearTest {
   }
 
   /**
-   * Test FootWear passing Strength as Null
+   * Test FootWear passing Strength as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testFootWearWithDefenceAsNull() {
@@ -271,7 +270,7 @@ public class GearTest {
   }
 
   /**
-   * Test Jewelry passing Gear Full Name as Null
+   * Test Jewelry passing Gear Full Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testJewelryWithFullNameAsNull() {
@@ -279,7 +278,7 @@ public class GearTest {
   }
 
   /**
-   * Test Jewelry passing Gear Adjective Name as Null
+   * Test Jewelry passing Gear Adjective Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testJewelryWithAdjectiveNameAsNull() {
@@ -287,19 +286,11 @@ public class GearTest {
   }
 
   /**
-   * Test Jewelry passing Strength as Null
+   * Test Jewelry passing Strength as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testJewelryWithDefenceAsNull() {
     torc = new Jewelry("Torc of Flame", "Flame", 0, null);
-  }
-
-  /**
-   * Test Gear Description Copy
-   */
-  @Test(expected = NullPointerException.class)
-  public void testGearDecriptionCopy() {
-    GearDescription geardesc = new GearDescription(null);
   }
 
 }

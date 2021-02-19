@@ -2,17 +2,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import rolePlayingGame.Attack;
-import rolePlayingGame.Battle;
-import rolePlayingGame.Character;
-import rolePlayingGame.Defense;
-import rolePlayingGame.Footwear;
-import rolePlayingGame.HandGear;
-import rolePlayingGame.HeadGear;
-import rolePlayingGame.IBattle;
-import rolePlayingGame.ICharacter;
-import rolePlayingGame.IGear;
-import rolePlayingGame.Jewelry;
+import game.Attack;
+import game.Battle;
+import game.Character;
+import game.Defense;
+import game.Footwear;
+import game.HandGear;
+import game.HeadGear;
+import game.IBattle;
+import game.ICharacter;
+import game.IGear;
+import game.Jewelry;
 
 /**
  * A JUnit test class for the IBattle.
@@ -74,7 +74,7 @@ public class BattleTest {
   }
 
   /**
-   * Test Battle Constructor
+   * Test Battle Constructor.
    */
   @Test
   public void testBattleConstructor() {
@@ -83,7 +83,7 @@ public class BattleTest {
   }
 
   /**
-   * Test Player1 passed as null
+   * Test Player1 passed as null.
    */
   @Test(expected = NullPointerException.class)
   public void testPlayer1PassedAsNull() {
@@ -91,7 +91,7 @@ public class BattleTest {
   }
 
   /**
-   * Test Player2 passed as null
+   * Test Player2 passed as null.
    */
   @Test(expected = NullPointerException.class)
   public void testPlayer2PassedAsNull() {
@@ -99,7 +99,7 @@ public class BattleTest {
   }
 
   /**
-   * Test Predict winner between two players
+   * Test Predict winner between two players.
    */
   @Test
   public void testPredictWinner() {
@@ -145,7 +145,7 @@ public class BattleTest {
   }
 
   /**
-   * Test Predict winner between two players
+   * Test Predict winner between two players.
    */
   @Test
   public void testPredictWinnerAndThereIsATie() {

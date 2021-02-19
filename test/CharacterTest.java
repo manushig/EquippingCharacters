@@ -7,20 +7,20 @@ import java.util.Objects;
 import org.junit.Before;
 import org.junit.Test;
 
+import game.Attack;
+import game.Character;
+import game.CharacterWearingHandler;
+import game.CountGearHandler;
+import game.Defense;
+import game.Footwear;
+import game.GearAllowedHandler;
+import game.GearStrengthHandler;
+import game.HandGear;
+import game.HeadGear;
+import game.ICharacter;
+import game.IGear;
+import game.Jewelry;
 import javafx.util.Pair;
-import rolePlayingGame.Attack;
-import rolePlayingGame.Character;
-import rolePlayingGame.CharacterWearingHandler;
-import rolePlayingGame.CountGearHandler;
-import rolePlayingGame.Defense;
-import rolePlayingGame.Footwear;
-import rolePlayingGame.GearAllowedHandler;
-import rolePlayingGame.GearStrengthHandler;
-import rolePlayingGame.HandGear;
-import rolePlayingGame.HeadGear;
-import rolePlayingGame.ICharacter;
-import rolePlayingGame.IGear;
-import rolePlayingGame.Jewelry;
 
 /**
  * A JUnit test class for the ICharacter.
@@ -105,7 +105,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test Character created correctly
+   * Test Character created correctly.
    */
 
   @Test
@@ -114,7 +114,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test Character passing Character Name as Null
+   * Test Character passing Character Name as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testJewelryWithAdjectiveNameAsNull() {
@@ -158,9 +158,11 @@ public class CharacterTest {
     String expectedResult = "********************Character Alice Details********************\n"
         + "\n" + "Name: Alice\n" + "\n" + "Head Gear : Helmet of Strength\n"
         + "Footwear : Boots of Momentum and Speed\n"
-        + "Hand Gear : Handcuffs of Passion, Invisibility, Ambush, Charge, Holding, Storm, Shock, Explosion, Telepathy and Flame\n"
-        + "Jewelry : Amulet of Electricity, Sight, Burning, Teleportation, Ice, Magic, Escape, Ruin, Telepathy, Flight, Healing, Sleep and Flame\n"
-        + "\n" + "Attack Strength: 66\n" + "Defence Strength: 133\n\n";
+        + "Hand Gear : Handcuffs of Passion, Invisibility, Ambush, Charge, Holding, "
+        + "Storm, Shock, Explosion, Telepathy and Flame\n"
+        + "Jewelry : Amulet of Electricity, Sight, Burning, Teleportation, Ice, Magic, "
+        + "Escape, Ruin, Telepathy, Flight, Healing, Sleep and Flame\n" + "\n"
+        + "Attack Strength: 66\n" + "Defence Strength: 133\n\n";
     String actualResult = alice.getCharacterDetails();
 
     assertEquals(expectedResult, actualResult);
@@ -174,10 +176,12 @@ public class CharacterTest {
     expectedResult = "********************Character Alice Details********************\n" + "\n"
         + "Name: Alice\n" + "\n" + "Head Gear : Headband of Shock\n"
         + "Footwear : Boots of Momentum and Speed\n"
-        + "Hand Gear : WristBand of Persuasion, Holding, Telepathy, Storm, Rain, Explosion, Invisibility, Charge, Ambush and Flame\n"
-        + "Jewelry : Brooch of Ice, Escape, Ruin, Telepathy, Flight, Magic, Sleep, Electricity, Flame, Burning, Healing, Sight and Teleportation\n"
-        + "\n" + "Attack Strength: 68\n" + "Defence Strength: 161\n" + "\n"
-        + "Discared Item List:\n" + "- Helmet of Strength replaced by Headband of Shock\n"
+        + "Hand Gear : WristBand of Persuasion, Holding, Telepathy, Storm, Rain, Explosion, "
+        + "Invisibility, Charge, Ambush and Flame\n"
+        + "Jewelry : Brooch of Ice, Escape, Ruin, Telepathy, Flight, Magic, Sleep, Electricity, "
+        + "Flame, Burning, Healing, Sight and Teleportation\n" + "\n" + "Attack Strength: 68\n"
+        + "Defence Strength: 161\n" + "\n" + "Discared Item List:\n"
+        + "- Helmet of Strength replaced by Headband of Shock\n"
         + "- Brass Knuckles of Shock replaced by Fingerless Gloves of Rain\n"
         + "- Handcuffs of Passion replaced by WristBand of Persuasion\n" + "";
     actualResult = alice.getCharacterDetails();
@@ -375,7 +379,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test GearAllowedHandler passing Gear as Null
+   * Test GearAllowedHandler passing Gear as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testGearAllowedHandlerwithNullValues() {
@@ -387,7 +391,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test GearAllowedHandler passing HandGear as Null
+   * Test GearAllowedHandler passing HandGear as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testGearAllowedHandlerwithHandGearNullValues() {
@@ -399,7 +403,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test GearAllowedHandler passing Footwear as Null
+   * Test GearAllowedHandler passing Footwear as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testGearAllowedHandlerwithFootwearNullValues() {
@@ -411,7 +415,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test GearAllowedHandler passing HeadGear as Null
+   * Test GearAllowedHandler passing HeadGear as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testGearAllowedHandlerwithHeadGearNullValues() {
@@ -423,7 +427,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test GearAllowedHandler passing Jewelry as Null
+   * Test GearAllowedHandler passing Jewelry as Null.
    */
   @Test(expected = NullPointerException.class)
   public void testGearAllowedHandlerwithJewelryNullValues() {
@@ -435,7 +439,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test weather Head gears Allowed more than the limit i.e 1
+   * Test weather Head gears Allowed more than the limit i.e 1.
    */
 
   @Test
@@ -468,7 +472,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test weather Footwear Allowed more than the limit i.e 2
+   * Test weather Footwear Allowed more than the limit i.e 2.
    */
 
   @Test
@@ -502,7 +506,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test weather HandGear Allowed more than the limit i.e 10
+   * Test weather HandGear Allowed more than the limit i.e 10.
    */
   @Test
   public void testHandGearsAllowed() {
@@ -543,7 +547,7 @@ public class CharacterTest {
   }
 
   /**
-   * Test weather Jewelry Allowed, there is no limit
+   * Test weather Jewelry Allowed, there is no limit.
    */
   @Test
   public void testJewelryAllowed() {
