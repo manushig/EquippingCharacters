@@ -103,10 +103,11 @@ public class Driver {
    */
   private static void prepareCharactersforBattle() {
     createCharacters();
-
+    System.out.println("********************Characters are wearing items********************\n");
     populateChest(Alice);
+    System.out.println("\n");
     populateChest(Bob);
-
+    System.out.println("\n");
     System.out.println(Alice.getCharacterDetails());
     System.out.println(Bob.getCharacterDetails());
   }
