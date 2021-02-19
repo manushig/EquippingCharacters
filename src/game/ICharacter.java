@@ -48,4 +48,21 @@ public interface ICharacter {
    * @throws IllegalArgumentException If Round value is 0 or null
    */
   public Pair<Integer, Integer> characterTotalStrength(int round);
+
+  /**
+   * Get details of the character hit points value.
+   * 
+   * @return the character hit points value.
+   * 
+   */
+  public int getCharacterHitPoints();
+
+  /**
+   * Perform a battle prediction between two players.
+   * 
+   * @param player2 This is Player 2
+   * @return a prediction of the battle
+   * @throws IllegalArgumentException If Player2 value is null
+   */
+  public String predictWinner(ICharacter player2);
 }

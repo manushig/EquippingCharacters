@@ -117,9 +117,7 @@ public class Driver {
    * battle and print its output.
    */
   private static void predictWinner() {
-    IBattle battle = new Battle(Alice, Bob);
-    int playersTotalHealth = 100;
-    String matchPredictionResult = battle.predictWinner(playersTotalHealth);
+    String matchPredictionResult = Alice.predictWinner(Bob);
 
     System.out.println(matchPredictionResult);
   }

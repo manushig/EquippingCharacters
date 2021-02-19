@@ -33,6 +33,7 @@ public class CharacterTest {
   private static IGear sandal;
   private static IGear boot;
   private static IGear hoverboard;
+  private static IGear slippers;
   private static IGear ring;
   private static IGear signet;
   private static IGear knuckleDuster;
@@ -45,6 +46,7 @@ public class CharacterTest {
   private static IGear handcuffs;
   private static IGear fingerlessGloves;
   private static IGear wristBand;
+  private static IGear mittens;
   private static IGear amulet;
   private static IGear necklace;
   private static IGear scarab;
@@ -71,6 +73,7 @@ public class CharacterTest {
     sandal = new Footwear("Sandals of Speed", "Speed", 20, new Attack(10));
     boot = new Footwear("Boots of Momentum", "Momentum", 20, new Attack(6));
     hoverboard = new Footwear("Hoverboard of Heft", "Heft", 40, new Attack(8));
+    slippers = new Footwear("Slippers of Swimming", "Swimming", 0, new Attack(-10));
 
     ring = new HandGear("Ring of Invisibility", "Invisibility", 0, new Attack(-5));
     signet = new HandGear("Signet of Ambush", "Ambush", 25, new Attack(5));
@@ -84,6 +87,7 @@ public class CharacterTest {
     handcuffs = new HandGear("Handcuffs of Passion", "Passion", 10, new Defense(2));
     fingerlessGloves = new HandGear("Fingerless Gloves of Rain", "Rain", 0, new Defense(20));
     wristBand = new HandGear("WristBand of Persuasion", "Persuasion", 40, new Attack(2));
+    mittens = new HandGear("Mittens of Disguise", "Disguise", 10, new Attack(18));
 
     amulet = new Jewelry("Amulet of Electricity", "Electricity", 0, new Attack(-5));
     necklace = new Jewelry("Necklace of Sight", "Sight", 20, new Attack(10));
@@ -575,6 +579,90 @@ public class CharacterTest {
     collar.accept(handler);
 
     assertEquals(true, handler.getIsAllowed());
+  }
+  
+  /**
+   * Test Predict winner between two players.
+   */
+  @Test
+  public void testPredictWinner() {
+    alice.dressUpGear(helmet);
+    alice.dressUpGear(boot);
+    alice.dressUpGear(sandal);
+    alice.dressUpGear(handcuffs);
+    alice.dressUpGear(ring);
+    alice.dressUpGear(signet);
+    alice.dressUpGear(knuckleDuster);
+    alice.dressUpGear(glove);
+    alice.dressUpGear(bracer);
+    alice.dressUpGear(brassKnuckles);
+    alice.dressUpGear(watch);
+    alice.dressUpGear(bangles);
+
+    bob.dressUpGear(bowTie);
+    bob.dressUpGear(chain);
+    bob.dressUpGear(pendant);
+    bob.dressUpGear(hoverboard);
+    bob.dressUpGear(ribbon);
+    bob.dressUpGear(choker);
+    bob.dressUpGear(cap);
+    bob.dressUpGear(mittens);
+    bob.dressUpGear(slippers);
+
+
+    String expectedResult = "*************** Battle Prediction ***************\n\n"
+        + "Bob is a winner, lasted 8 rounds.";
+    String actualResult = alice.predictWinner(bob);
+
+    assertEquals(expectedResult, actualResult);
+
+
+    expectedResult = "*************** Battle Prediction ***************\n\n"
+        + "Bob is a winner, lasted 8 rounds.";
+    actualResult = bob.predictWinner(alice);
+
+    assertEquals(expectedResult, actualResult);
+  }
+
+  /**
+   * Test Predict tie between two players.
+   */
+  @Test
+  public void testPredictWinnerAndThereIsATie() {
+    alice.dressUpGear(helmet);
+    alice.dressUpGear(boot);
+    alice.dressUpGear(sandal);
+    alice.dressUpGear(handcuffs);
+    alice.dressUpGear(ring);
+    alice.dressUpGear(signet);
+    alice.dressUpGear(knuckleDuster);
+    alice.dressUpGear(glove);
+    alice.dressUpGear(bracer);
+    alice.dressUpGear(brassKnuckles);
+    alice.dressUpGear(watch);
+    alice.dressUpGear(bangles);
+
+    ICharacter alex = new Character("Alex", 10, 20, 100);
+    alex.dressUpGear(helmet);
+    alex.dressUpGear(boot);
+    alex.dressUpGear(sandal);
+    alex.dressUpGear(handcuffs);
+    alex.dressUpGear(ring);
+    alex.dressUpGear(signet);
+    alex.dressUpGear(knuckleDuster);
+    alex.dressUpGear(glove);
+    alex.dressUpGear(bracer);
+    alex.dressUpGear(brassKnuckles);
+    alex.dressUpGear(watch);
+    alex.dressUpGear(bangles);
+
+
+    String expectedResult = "*************** Battle Prediction ***************\n\n"
+        + "Its a tie after 7 rounds.";
+    String actualResult = alice.predictWinner(alex);
+
+    assertEquals(expectedResult, actualResult);
+
   }
 
 }
