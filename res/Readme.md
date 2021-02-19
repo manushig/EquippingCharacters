@@ -166,76 +166,85 @@ Do you want a rematch? Reply Yes/No
 ## Design/Model Changes
 
 ### - Version 2.0
+##### ICharacter interface:
+It provides the methods like adding gears to the character, getting details about the character, predictwinner of the match and also the getHitPoints of the character; in which driver is interested to create/test the game.
 
-#### ICharacter Interface:
-Provides the Interface class to the user which exposes all the funcitonality/requirements APIs to the user (addSpecies, printHabitat map, ...).
-    
-Abstract conservancy class is removed since can't predict the common feature required for different additional houses.
-    
-#### ReptileHouses class:
-It implements the IReptileHouse interface, interacts with the IHabitat interface to get/set habitat specific details (1 --> * relation) and uses ISpecies for getting the species related details (1 --> * relation).
-    
-##### IHabitat Interface:
-Provides the skeleton for the Habitat class
-    
-Abstract Habitat  class is removed since can't predict the common feature required for different habitats.
-    
-##### Habitat class:
-This class implements the IHabitat interface, like  addSpecies, addnaturalFeatures which were common to all habitats. This class interacts with the ISpecies interface to get/set species specific information (addSpecies to Habitat, get species compatibility,...) (1 --> * relation)
-   
-##### ISpecies Interface;
-Provides the skeleton for the species APIs
-   
-Abstract Species  class is removed since can't predict the common feature required for different species.
-   
-##### Species class:
-This class implements the ISpecies Interface which provides implementation specific to species.It provides methods required for habitat and Reptile house to implement the requirements.
-   
-##### HabitatSpeciesDetails:
-This is supporting class maintains the details about the habitat's species. When the species are added to the habitat, habitat's characteristics changes like natural features, temperature range, remaining size of the habitat. This class is used to maintain all these details and will be used to set the habitat charecteristics, which is also reduces number of calls we do to the species class
-   
-There are other supporting class like SpeciesIndicators to maintain if species is (Poisonous, endangered, ..), SpeceisSize( small, medium, ..).
-   
-   
+##### Character class:
+This is the concrete implementation of the ICharacter interface, which provides the implementation of all the required methods (getting details about the character, predictwinner of the match and also the getHitPoints of the character;) This class also maintain the list of gears the character is wearing and also the list of gears the characters discarded.
+
+##### IStrength interface which implementd the <Comparable> Interface
+This is the interface for the strength of an character or gear
+This interface provides methods for the visitor class to get into appropriate gear or character's strength type and get the value of the strength they are having
+
+##### Intuition:
+This I had to add because to get the value of the strength each gear or character is having, and I thought visitor pattern is best way to implement the double dispatch.
+
+##### AbstractStrength class:
+This is the concrete implementation of the IStrength which provides the implementation of the accept methods and facilitates the visitor.
+
+##### Intuition:
+Attack and Defense classes which extends the AbstractStrength provides different implementation for compareTo() and accept() which will used for getting the strength value back to the character/gear class.
+
+##### IGear interface, implements <Comparable>
+This interface provides definitions for a Gear, 
+
+##### Abstract Gear class:
+This provides the common and most of the implementation for the gear, it maintains the gear description, strength of the gear which is common to all of the gears.
+
+##### IGear concrete classes:
+HandGear, HeadGear, Footwear, Jewelry classes which extends AbstractGear class, provides the implementation of compareTo, and accept classes which are needed while adding a gear to the character, also to get the current count of particular type of gear.
+
+##### GearVistor interface:
+It declares the visit operations for all the types of classes of type IGear which can be visited (# of gears allowed for a particular type, to get strength of particular type attack or defense, to get the count of particular gear type)
+
+##### CharacterWearingHandler class
+This class implements the Gear Visitor interface. It handles the description representation of different types of gears character is wearing by traversing through all gear types using the visit()
+
+##### CountGearHandler interface
+This class implements the Gear Visitor interface. It handles the count of gear a character is wearing using the visit()
+
+##### GearAllowedHandler interface
+This class implements the Gear Visitor interface. It handles whether a gear can be added to the list before comparing with the existing list of gears by using the visit methods()
+
+##### GearStrengthHandler interface
+This class implements the Gear Visitor interface. It handles the calculation of the gear strength considering wear out percentage in the given round using visit()
+
+##### StrengthVisitor interface:
+It declares the visit operations for all the types of classes of type IStrength which can be visited.
+
+##### StrengthHandler class
+This class implements the Gear Visitor interface. It handles the attack and defense values of character or gear.
+
+##### There are other supporting class which defines the description of a gear GearDescription
+
+
 ### - Version 1.0:
+##### IRolePlayer Interface class:
+Provides interface functionality for the user/driver to perform functions like add an character, add an gear to the character, and also I was thinking will do predictWin and rematch win in the driver class rather than inside any concrete class
    
-##### Convervancy Interface: 
-Initially I have provided this Interface class to the user which exposes all the funcitonality/requirments APIs to the user (addSpecies, printHabitat map, ...).
+##### Role Player Builder class:
+   Intuition for this class was to create different characters and each character internally added with gears, similar to medivalBuilder where we create levels (in here its characters), so each levels will have its own monsters and treasures (in here it will be gears). I thought I can use builder pattern to create a character and update the items its using
    
-##### Conservancy abstract class:
-This abstract class implements the conservancy interface and provides the concrete class for all the APIS. Reptile house extends this abstract class. 
+##### ICharacter Interface:
+   Provides the feature sets which defines a characters
    
-Idea behind this desgin was if in the future if there was a requirement for another bird conservancy or fish conservancy we can extend this class which has all the required APIS implemented.
+##### Character class:
+   Concrete class which implements the ICharacter, which holds all information about the character, the number of gears it holds, attack strength and defense strength
 
-##### Reptile House class:
-This class extends the Conservancy abstract class which provides the implementation of all user APIs. This class only provides implementation specific to the resptile house.
+##### IGear Interface
+   Provides definition for an gear or item.
    
-##### Habitat Interface:
-Provides the skeleton for the Habitat class
+##### Abstract Gear class:
+   It provides implementation of how the geat should behave and how to give the character class about the gear attack and defense strength when queried.
    
-##### Abstract habitat class:
-This class implements the habitat interface, like  addSpecies, addnaturalFeatures which were common to all habitats. 
-Intuition of making this class abstract is to keep the common features of all habitat in one place and if there is any future requirement of adding warm blodded habitat we can use this class to get the common habitat implementation.
+   There are other supporting classes which helps to define the gear information and also strength information like Strength class, Gear Description class
    
-##### Coldbloddedhabitat:
-This class extends the AbstractHabitat class which provides implementation specific to cold blodded habitat. 
-   
-##### Species Interface:
-Provides the skeleton for the species APIs
-   
-##### Abstract Species class:
-Implements the APIS needed for the species interface.
-   
-##### Coldblodded species:
-This class extends the Abstractspecies class which provides implementation specific to cold blodded species.
-   
-There are another supporting classes which are used by other reptile, habitat and species concrete classes.
-   
+   HeadGear, HandGear, JewlleryGear, FootwearGear, extends the Abstract Gear class, and implements its won specific compareTo functions when queried.
    
 # ASSUMPTIONS
  
 1) Cursed items will have negative value for Attack or Defence.
-2) If character is wearing duplicate items then it will be described as "Sandals of Speed and Speed".
+2) If character is wearing duplicate items( "Sandals of Speed" x 2 ) then it will be described as "Sandals of Speed and Speed".
 3) HandGear and Jewelery items will either have Attack or Defence not both.
 4) While choosing gears beyond the limit, character always choose attack strength over a defense strength.
 5) While choosing gear, if the given gear is not better than any of the gears character currently wearing then it will get discarded without replacing any existing item.
