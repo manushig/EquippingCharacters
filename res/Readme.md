@@ -36,7 +36,7 @@ Game package will have the below mentioned folder structure:
 
  ## How to Use the Program.
      
-    There is user interaction when user wants to rematch, in this characters to play a rematch in which case they should be allowed to "dress" in a new selection of items, so user just have to run the jar file as mentioned above and after one match played, they could choose whether they want to rematch by typing as Yes and if no rematch, then they can type as No. All other inputs will be considered as invalid and no rematch will happen.
+There is user interaction when user wants to rematch, in this characters to play a rematch in which case they should be allowed to "dress" in a new selection of items, so user just have to run the jar file as mentioned above and after one match played, they could choose whether they want to rematch by typing as Yes and if no rematch, then they can type as No. All other inputs will be considered as invalid and no rematch will happen.
     
 ## Description of Example Runs
 
@@ -247,3 +247,4 @@ There are another supporting classes which are used by other reptile, habitat an
   
 # Limitations
  None
+
