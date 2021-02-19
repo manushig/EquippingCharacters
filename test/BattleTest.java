@@ -69,8 +69,8 @@ public class BattleTest {
     pendant = new Jewelry("Pendant of Ruin", "Ruin", 10, new Defense(5));
     chain = new Jewelry("Chain of Telepathy", "Telepathy", 20, new Defense(5));
     choker = new Jewelry("Choker of Flight", "Flight", 10, new Defense(11));
-    alice = new Character("Alice", 10, 20);
-    bob = new Character("Bob", 10, 20);
+    alice = new Character("Alice", 10, 20, 100);
+    bob = new Character("Bob", 10, 20, 100);
   }
 
   /**
@@ -145,7 +145,7 @@ public class BattleTest {
   }
 
   /**
-   * Test Predict winner between two players.
+   * Test Predict tie between two players.
    */
   @Test
   public void testPredictWinnerAndThereIsATie() {
@@ -162,7 +162,7 @@ public class BattleTest {
     alice.dressUpGear(watch);
     alice.dressUpGear(bangles);
 
-    ICharacter alex = new Character("Alex", 10, 20);
+    ICharacter alex = new Character("Alex", 10, 20, 100);
     alex.dressUpGear(helmet);
     alex.dressUpGear(boot);
     alex.dressUpGear(sandal);

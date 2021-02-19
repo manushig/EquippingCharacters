@@ -13,7 +13,7 @@ import java.util.Objects;
 public class GearStrengthHandler implements GearVisitor {
   private int totalDefenceValue;
   private int totalAttackValue;
-  private final Integer currentRound;
+  private final int currentRound;
 
   /**
    * Constructs a GearStrengthHandler in terms of round.

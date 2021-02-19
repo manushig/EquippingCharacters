@@ -21,13 +21,13 @@ import javafx.util.Pair;
 public interface ICharacter {
   /**
    * Dress a character with a given item if its compatible or replace it better
-   * Gear otherwise discard the gear.
+   * gear, otherwise discard the gear.
    * 
    * @param gear This is a gear which characters need to put on.
    * @return an ICharacter object.
    * @throws IllegalArgumentException If IsGearAllowed or gear values are null
    */
-  public ICharacter dressUpGear(IGear gear);
+  public String dressUpGear(IGear gear);
 
   /**
    * Get details of the character in the battle along with what they are wearing
@@ -39,7 +39,7 @@ public interface ICharacter {
   public String getCharacterDetails();
 
   /**
-   * Retrieve total character hit points in given round.
+   * Retrieve total character strength in given round.
    * 
    * @param round This is round number of the match.
    * @return total character hit points which include Character Attack Value and
@@ -47,5 +47,5 @@ public interface ICharacter {
    * 
    * @throws IllegalArgumentException If Round value is 0 or null
    */
-  public Pair<Integer, Integer> characterHitPoints(int round);
+  public Pair<Integer, Integer> characterTotalStrength(int round);
 }

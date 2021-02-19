@@ -55,7 +55,7 @@ public class Battle implements IBattle {
     Boolean isMatchContinuing = true;
 
     while (isMatchContinuing) {
-      player1HitPoints = Objects.requireNonNull(player1.characterHitPoints(round),
+      player1HitPoints = Objects.requireNonNull(player1.characterTotalStrength(round),
           "Player Hit points value cannot be null");
       player1Attack = player1HitPoints.getKey();
       player1Defence = player1HitPoints.getValue();
@@ -67,7 +67,7 @@ public class Battle implements IBattle {
         player1Defence = 0;
       }
 
-      player2HitPoints = Objects.requireNonNull(player2.characterHitPoints(round),
+      player2HitPoints = Objects.requireNonNull(player2.characterTotalStrength(round),
           "Player Hit points value cannot be null");
       player2Attack = player2HitPoints.getKey();
       player2Defence = player2HitPoints.getValue();
@@ -140,10 +140,10 @@ public class Battle implements IBattle {
         result = String.format("Its a tie after %d rounds.", round);
         break;
       case PLAYER_1_WINNER:
-        result = String.format("%s a winner, survived %d rounds.", player1.toString(), round);
+        result = String.format("%s is a winner, lasted %d rounds.", player1.toString(), round);
         break;
       case PLAYER_2_WINNER:
-        result = String.format("%s a winner, survived %d rounds.", player2.toString(), round);
+        result = String.format("%s is a winner, lasted %d rounds.", player2.toString(), round);
         break;
       default:
         result = String.format("Something went wrong. Try again");

@@ -13,11 +13,11 @@ import javafx.util.Pair;
  * "wearing" different items.
  */
 public class Character implements ICharacter {
+  private final int characterHitPoints;
   private final String characterName;
   private final IStrength characterAttackStrength;
   private final IStrength characterDefenseStrength;
   private List<IGear> itemsCurrentlyWearingList;
-  private List<GearDiscarded> itemsDiscardedList;
 
   /**
    * Constructs a Character in terms of its name, attack and defense strengths.
@@ -28,16 +28,17 @@ public class Character implements ICharacter {
    * @throws NullPointerException If Character Name, Attack and Defense strength
    *                              values are null.
    */
-  public Character(String characterName, int characterAttackPower, int characterDefencePower) {
+  public Character(String characterName, int characterAttackPower, int characterDefencePower,
+      int characterHitPoints) {
     this.characterName = Objects.requireNonNull(characterName, "Character Name cannot be null");
     this.characterAttackStrength = new Attack(characterAttackPower);
     this.characterDefenseStrength = new Defense(characterDefencePower);
+    this.characterHitPoints = characterHitPoints;
     this.itemsCurrentlyWearingList = new ArrayList<IGear>();
-    this.itemsDiscardedList = new ArrayList<GearDiscarded>();
   }
 
   @Override
-  public ICharacter dressUpGear(IGear gear) throws IllegalArgumentException {
+  public String dressUpGear(IGear gear) throws IllegalArgumentException {
     if (Objects.isNull(gear)) {
       throw new IllegalArgumentException("Gear value cannot be null");
     }
@@ -45,6 +46,7 @@ public class Character implements ICharacter {
     int currentHeadGearCount = 0;
     int currentHandGearCount = 0;
     int currentFootWearCount = 0;
+    String gearDressedUpResult = "";
 
     for (IGear item : itemsCurrentlyWearingList) {
       item.accept(countGearHandler);
@@ -61,20 +63,24 @@ public class Character implements ICharacter {
     if (Objects.requireNonNull(isGearAllowedHandler.getIsAllowed(),
         "IsGearAllowed value cannot be null")) {
       this.itemsCurrentlyWearingList.add(gear);
+      gearDressedUpResult = String.format("%s wore %s", this.characterName, gear.toString());
+
     } else {
       Collections.sort(this.itemsCurrentlyWearingList);
-      GearDiscarded gearToDiscard = null;
+
       IGear discardedGear = null;
       for (IGear existingItem : this.itemsCurrentlyWearingList) {
         int result = existingItem.compareTo(gear);
         if (result < 0) {
-          gearToDiscard = new GearDiscarded(existingItem, gear);
+
           discardedGear = existingItem;
+          gearDressedUpResult = String.format("%s discarded %s replaced by %s", this.characterName,
+              existingItem.toString(), gear.toString());
           break;
         }
       }
-      if (Objects.isNull(gearToDiscard)) {
-        gearToDiscard = new GearDiscarded(gear, null);
+      if (Objects.isNull(discardedGear)) {
+        gearDressedUpResult = String.format("%s discarded %s", this.characterName, gear.toString());
       } else {
         ListIterator<IGear> iterator = this.itemsCurrentlyWearingList.listIterator();
         while (iterator.hasNext()) {
@@ -85,10 +91,8 @@ public class Character implements ICharacter {
           }
         }
       }
-
-      this.itemsDiscardedList.add(gearToDiscard);
     }
-    return this;
+    return gearDressedUpResult;
   }
 
   @Override
@@ -98,14 +102,12 @@ public class Character implements ICharacter {
 
     String characterWearing = getCharacterWearing();
     String strength = getStrength();
-    String discaredItemList = getDiscaredItemsList();
 
     characterDescription.append(
         "********************Character " + this.characterName + " Details********************\n\n");
     characterDescription.append("Name: " + this.characterName + "\n");
     characterDescription.append("\n" + characterWearing);
     characterDescription.append("\n" + strength);
-    characterDescription.append("\n" + discaredItemList);
 
     return characterDescription.toString();
   }
@@ -202,24 +204,6 @@ public class Character implements ICharacter {
   }
 
   /**
-   * Private Helper method to print discarded gear list.
-   *
-   * @return String to print discarded gear list
-   */
-  private String getDiscaredItemsList() {
-    StringBuilder stringBuilder = new StringBuilder();
-
-    if (this.itemsDiscardedList.size() > 0) {
-      stringBuilder.append("Discared Item List:\n");
-    }
-    for (GearDiscarded item : itemsDiscardedList) {
-      stringBuilder.append("- " + item.toString() + "\n");
-    }
-
-    return stringBuilder.toString();
-  }
-
-  /**
    * Private Helper method to get total character hit points which include
    * Character Attack Value and Character Defense Value.
    *
@@ -260,7 +244,7 @@ public class Character implements ICharacter {
   }
 
   @Override
-  public Pair<Integer, Integer> characterHitPoints(int round) throws IllegalArgumentException {
+  public Pair<Integer, Integer> characterTotalStrength(int round) throws IllegalArgumentException {
 
     if ((Objects.isNull(round)) || (round == 0)) {
       throw new IllegalArgumentException("Round value cannot be 0 or null");

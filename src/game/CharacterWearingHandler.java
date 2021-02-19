@@ -14,10 +14,10 @@ import java.util.Objects;
 
 public class CharacterWearingHandler implements GearVisitor {
 
-  String headGearDescription;
-  String handGearDescription;
-  String footWearDescription;
-  String jewelryDescription;
+  private String headGearDescription;
+  private String handGearDescription;
+  private String footWearDescription;
+  private String jewelryDescription;
 
   /**
    * Constructs a CharacterWearingHandler.

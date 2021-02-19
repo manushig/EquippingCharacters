@@ -127,8 +127,8 @@ public class Driver {
    * Private Helper method create two characters for the battle.
    */
   private static void createCharacters() {
-    Bob = new Character("Bob", 5, 20);
-    Alice = new Character("Alice", 15, 10);
+    Bob = new Character("Bob", 5, 20, 100);
+    Alice = new Character("Alice", 15, 10, 100);
   }
 
   /**
@@ -241,7 +241,7 @@ public class Driver {
 
     for (int i = 0; i < 20; i++) {
       int index = getRandomNumber(0, listSize - 1);
-      character.dressUpGear(gearsList.get(index));
+      System.out.println(character.dressUpGear(gearsList.get(index)));
     }
   }
 
@@ -252,7 +252,7 @@ public class Driver {
    * @param max It is the maximum range
    * 
    */
-  public static int getRandomNumber(int min, int max) {
+  private static int getRandomNumber(int min, int max) {
     Random random = new Random();
     return random.nextInt(max - min) + min;
   }
