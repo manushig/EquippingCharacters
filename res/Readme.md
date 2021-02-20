@@ -253,6 +253,7 @@ Provides interface functionality for the user/driver to perform functions like a
 8) All calculations of attack and defence are done expecting values are integral values. 
 9) When user will be given an option to rematch, expected input is yes or no, any other value will be considered as invalid and no rematch will happen.
 10) Each gear has worn out percentage which will decrease its strength in each round.
+11) Whenever user chooses to rematch, all the details regrading what character is wearing after new population of chest and the charcter details will be printed along with battle prediction.
   
 # Limitations
  None

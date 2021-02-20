@@ -130,7 +130,7 @@ public class CharacterTest {
    */
 
   @Test
-  public void dressUpCharacterWithGears() {
+  public void dressUpCharacterWithGearsAndPrintDetails() {
     // Add 1 HeadGear, 2 FootWear, 10 HandGears and 13 Jewelry
     assertEquals("Alice wore Helmet of Strength", alice.dressUpGear(helmet));
     assertEquals("Alice wore Boots of Momentum", alice.dressUpGear(boot));
@@ -158,7 +158,7 @@ public class CharacterTest {
     assertEquals("Alice wore Tie of Healing", alice.dressUpGear(tie));
     assertEquals("Alice wore Carcanet of Sleep", alice.dressUpGear(carcanet));
     assertEquals("Alice wore Torc of Flame", alice.dressUpGear(torc));
-    
+
     String expectedResult = "********************Character Alice Details********************\n"
         + "\n" + "Name: Alice\n" + "\n" + "Head Gear : Helmet of Strength\n"
         + "Footwear : Boots of Momentum and Speed\n"
@@ -173,9 +173,12 @@ public class CharacterTest {
 
     // Test dressUp Characters with More Than Allowed Gears, some gears should be
     // discarded and then print the character details.
-    assertEquals("Alice discarded Helmet of Strength replaced by Headband of Shock", alice.dressUpGear(headband));
-    assertEquals("Alice discarded Brass Knuckles of Shock replaced by Fingerless Gloves of Rain", alice.dressUpGear(fingerlessGloves));
-    assertEquals("Alice discarded Handcuffs of Passion replaced by WristBand of Persuasion", alice.dressUpGear(wristBand));
+    assertEquals("Alice discarded Helmet of Strength replaced by Headband of Shock",
+        alice.dressUpGear(headband));
+    assertEquals("Alice discarded Brass Knuckles of Shock replaced by Fingerless Gloves of Rain",
+        alice.dressUpGear(fingerlessGloves));
+    assertEquals("Alice discarded Handcuffs of Passion replaced by WristBand of Persuasion",
+        alice.dressUpGear(wristBand));
 
     expectedResult = "********************Character Alice Details********************\n" + "\n"
         + "Name: Alice\n" + "\n" + "Head Gear : Headband of Shock\n"
@@ -189,7 +192,7 @@ public class CharacterTest {
 
     assertEquals(expectedResult, actualResult);
 
-    // Adding duplicate values    
+    // Adding duplicate values
     assertEquals("Bob wore Helmet of Strength", bob.dressUpGear(helmet));
     assertEquals("Bob wore Boots of Momentum", bob.dressUpGear(boot));
     assertEquals("Bob wore Boots of Momentum", bob.dressUpGear(boot));
@@ -231,7 +234,7 @@ public class CharacterTest {
     Pair<Integer, Integer> actualResult = alice.characterTotalStrength(round);
 
     assertEquals(expectedResult, actualResult);
-        
+
     assertEquals(false, Objects.isNull(alice.dressUpGear(helmet)));
     assertEquals(false, Objects.isNull(alice.dressUpGear(boot)));
     assertEquals(false, Objects.isNull(alice.dressUpGear(sandal)));
@@ -580,7 +583,7 @@ public class CharacterTest {
 
     assertEquals(true, handler.getIsAllowed());
   }
-  
+
   /**
    * Test Predict winner between two players.
    */
@@ -609,13 +612,11 @@ public class CharacterTest {
     bob.dressUpGear(mittens);
     bob.dressUpGear(slippers);
 
-
     String expectedResult = "*************** Battle Prediction ***************\n\n"
         + "Bob is a winner, lasted 8 rounds.";
     String actualResult = alice.predictWinner(bob);
 
     assertEquals(expectedResult, actualResult);
-
 
     expectedResult = "*************** Battle Prediction ***************\n\n"
         + "Bob is a winner, lasted 8 rounds.";
@@ -655,7 +656,6 @@ public class CharacterTest {
     alex.dressUpGear(brassKnuckles);
     alex.dressUpGear(watch);
     alex.dressUpGear(bangles);
-
 
     String expectedResult = "*************** Battle Prediction ***************\n\n"
         + "Its a tie after 7 rounds.";

@@ -114,7 +114,8 @@ public class Character implements ICharacter {
   /**
    * Private Helper method to get total Strength of the character.
    *
-   * @return String of total Strength of the character which will be used for printing
+   * @return String of total Strength of the character which will be used for
+   *         printing
    */
   private String getStrength() {
     StringBuilder strength = new StringBuilder();
@@ -373,17 +374,17 @@ public class Character implements ICharacter {
     String result = "";
 
     switch (matchResult) {
-    case TIE:
-      result = String.format("Its a tie after %d rounds.", round);
-      break;
-    case PLAYER_1_WINNER:
-      result = String.format("%s is a winner, lasted %d rounds.", this.characterName, round);
-      break;
-    case PLAYER_2_WINNER:
-      result = String.format("%s is a winner, lasted %d rounds.", player2Name, round);
-      break;
-    default:
-      result = String.format("Something went wrong. Try again");
+      case TIE:
+        result = String.format("Its a tie after %d rounds.", round);
+        break;
+      case PLAYER_1_WINNER:
+        result = String.format("%s is a winner, lasted %d rounds.", this.characterName, round);
+        break;
+      case PLAYER_2_WINNER:
+        result = String.format("%s is a winner, lasted %d rounds.", player2Name, round);
+        break;
+      default:
+        result = String.format("Something went wrong. Try again");
     }
 
     return result;

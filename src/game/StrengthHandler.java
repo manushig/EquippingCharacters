@@ -3,7 +3,7 @@ package game;
 import java.util.Objects;
 
 /**
- * StrengthHandler, manages the attack and defense of character or gear.
+ * StrengthHandler, manages the attack and defense values of character or gear.
  */
 public class StrengthHandler implements StrengthVisitor {
   private Integer attackStrengthValue;
