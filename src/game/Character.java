@@ -26,6 +26,7 @@ public class Character implements ICharacter {
    * @param characterName         It is the Character Name.
    * @param characterAttackPower  It is the Character Attack Strength.
    * @param characterDefencePower It is the Character Defense Strength.
+   * @param characterHitPoints    It is the Character Hit Points.
    */
   public Character(String characterName, int characterAttackPower, int characterDefencePower,
       int characterHitPoints) {
@@ -374,17 +375,17 @@ public class Character implements ICharacter {
     String result = "";
 
     switch (matchResult) {
-      case TIE:
-        result = String.format("Its a tie after %d rounds.", round);
-        break;
-      case PLAYER_1_WINNER:
-        result = String.format("%s is a winner, lasted %d rounds.", this.characterName, round);
-        break;
-      case PLAYER_2_WINNER:
-        result = String.format("%s is a winner, lasted %d rounds.", player2Name, round);
-        break;
-      default:
-        result = String.format("Something went wrong. Try again");
+    case TIE:
+      result = String.format("Its a tie after %d rounds.", round);
+      break;
+    case PLAYER_1_WINNER:
+      result = String.format("%s is a winner, lasted %d rounds.", this.characterName, round);
+      break;
+    case PLAYER_2_WINNER:
+      result = String.format("%s is a winner, lasted %d rounds.", player2Name, round);
+      break;
+    default:
+      result = String.format("Something went wrong. Try again");
     }
 
     return result;
